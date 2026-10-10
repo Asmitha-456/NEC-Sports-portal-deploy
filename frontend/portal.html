@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEC Sports Portal — Official Role-Based Management</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/nec-logo.png">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-wrapper">
+        <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem;">
+          <img src="assets/nec-logo.png" alt="National Engineering College" class="brand-logo" onerror="this.src='https://placehold.co/100x100?text=NEC'">
+          <div class="brand-titles">
+            <span class="college-name">National Engineering College</span>
+            <span class="portal-tagline">Department of Physical Education • Official Sports Portal</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <!-- Light / Dark Switch -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleThemeMode()" title="Toggle Light/Dark Theme">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-label" data-i18n="dark_mode">Dark</span>
+        </button>
+
+        <!-- Language Switcher (EN / TA) -->
+        <button class="lang-toggle-btn" id="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language / மொழி மாற்று">
+          🌐 <span id="current-lang-label">தமிழ்</span>
+        </button>
+
+        <!-- Communication Hub Button -->
+        <button class="btn btn-outline btn-sm" onclick="openCommunicationModal()" title="WhatsApp, Email & SMS Hub">
+          💬 <span data-i18n="communication">Communication</span>
+        </button>
+
+        <!-- Settings Button -->
+        <button class="btn btn-outline btn-sm" onclick="openSettingsModal()" title="Portal Settings & Themes">
+          ⚙️ <span data-i18n="settings">Settings</span>
+        </button>
+
+        <!-- Notifications Button with Flyout & Sound Toggle -->
+        <div style="position: relative;">
+          <button class="btn btn-outline btn-sm notification-bell-btn" id="notif-bell-btn" onclick="toggleNotificationsFlyout()" style="position: relative;" title="Announcements & Alerts">
+            🔔 <span data-i18n="notifications">Alerts</span>
+            <span id="notification-badge" class="badge badge-danger notification-badge-pulsing" style="display: none; margin-left: 4px;">0</span>
+          </button>
+
+          <!-- Quick Flyout Dropdown -->
+          <div class="notifications-flyout" id="notifications-flyout">
+            <div class="flyout-header">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <strong>🔔 Notifications</strong>
+                <span id="flyout-unread-pill" class="badge badge-danger" style="font-size: 0.65rem;">0 new</span>
+              </div>
+              <div style="display: flex; gap: 0.25rem;">
+                <button type="button" class="btn btn-outline btn-sm" style="padding: 2px 6px; font-size: 0.75rem;" onclick="toggleNotificationSound()" id="flyout-sound-btn" title="Toggle Sound">🔊</button>
+                <button type="button" class="btn btn-outline btn-sm" style="padding: 2px 6px; font-size: 0.75rem;" onclick="markAllNotificationsRead()" title="Mark All Read">✓ All</button>
+              </div>
+            </div>
+            <div class="flyout-list" id="flyout-notifications-list">
+              <div class="loading-state"><div class="spinner"></div></div>
+            </div>
+            <div class="flyout-footer">
+              <button type="button" class="btn btn-primary btn-sm" style="width: 100%;" onclick="openFullNotificationCenter()">
+                Open Notification Center ➔
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Pill -->
+        <div style="display: flex; align-items: center; gap: 0.6rem; padding-left: 0.25rem;">
+          <div class="user-avatar" id="user-avatar-initials">NEC</div>
+          <div style="display: flex; flex-direction: column;">
+            <span id="user-display-name" style="font-weight: 700; font-size: 0.875rem;">Sports User</span>
+            <span id="user-display-role" class="role-badge role-staff">STAFF</span>
+          </div>
+        </div>
+
+        <!-- Logout Button -->
+        <button class="btn btn-secondary btn-sm" onclick="logoutUser(true)" data-i18n="logout">Logout ➔</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portal Container -->
+  <div class="portal-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="portal-sidebar">
+      <div class="user-profile-badge">
+        <div class="user-avatar" style="width: 48px; height: 48px;">🏆</div>
+        <div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Active Account</div>
+          <div id="user-display-dept" style="font-weight: 600; font-size: 0.95rem; color: var(--primary-800);">Department of Sports</div>
+        </div>
+      </div>
+
+      <nav class="portal-nav-links" id="portal-nav-links">
+        <!-- Dynamically injected by app.js based on role -->
+      </nav>
+
+      <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+        NEC Autonomous • Sports ERP v1.0<br>
+        Kovilpatti, Tamil Nadu
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="portal-main-content">
+
+      <!-- ============================================================== -->
+      <!-- TAB 1: OVERVIEW DASHBOARD -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- TAB 1: OVERVIEW DASHBOARD -->
+      <!-- ============================================================== -->
+      <section id="tab-view-overview" class="portal-tab-content active">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" id="overview-heading-title">Sports Portal Overview</h2>
+            <p class="section-subtitle" id="overview-heading-sub">Real-time statistics, event schedules, and automated OD processing state.</p>
+          </div>
+          <div id="overview-header-actions" style="display: none;">
+            <button class="btn btn-primary" onclick="openRegistrationModal()">
+              🏃 Register for Sports Event
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. STUDENT PERSONALIZED OVERVIEW SECTION (Visible to Students) -->
+        <div id="overview-student-section" style="display: none;">
+          <!-- Welcome Hero Banner -->
+          <div class="card mb-4" style="background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%); color: white; border: none; padding: 1.5rem 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <span class="badge" style="background: rgba(255,255,255,0.2); color: white; margin-bottom: 0.5rem; font-size: 0.75rem;">🏅 NEC STUDENT ATHLETE PORTAL</span>
+                <h2 style="font-size: 1.6rem; font-weight: 800; margin: 0.2rem 0; color: white;">
+                  Welcome back, <span id="overview-student-name">Student</span>! 👋
+                </h2>
+                <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem;">
+                  Reg No: <strong><span id="overview-student-reg">--</span></strong> • Department: <strong><span id="overview-student-dept">--</span></strong> • <strong><span id="overview-student-year">--</span></strong>
+                </div>
+              </div>
+              <div style="display: flex; gap: 0.75rem;">
+                <button class="btn btn-sm" style="background: white; color: var(--primary-900); font-weight: 700;" onclick="openRegistrationModal()">
+                  ⚡ Register for an Event
+                </button>
+                <button class="btn btn-sm btn-outline" style="border-color: rgba(255,255,255,0.7); color: white;" onclick="switchPortalTab('my-od')">
+                  🎫 View My OD Passes
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Stats Overview Grid -->
+          <div class="stats-overview-grid mb-4">
+            <div class="stat-card" style="border-left: 4px solid var(--primary-600); cursor: pointer;" onclick="switchPortalTab('my-events')">
+              <div class="stat-icon">🏃</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-student-events-count">0</span>
+                <span class="stat-label">My Registered Events</span>
+              </div>
+            </div>
+            <div class="stat-card" style="border-left: 4px solid #10b981; cursor: pointer;" onclick="switchPortalTab('my-od')">
+              <div class="stat-icon">🎫</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-student-od-count">0</span>
+                <span class="stat-label">Sanctioned OD Passes</span>
+              </div>
+            </div>
+            <div class="stat-card" style="border-left: 4px solid #3b82f6; cursor: pointer;" onclick="openRegistrationModal()">
+              <div class="stat-icon">🟢</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-student-open-events">0</span>
+                <span class="stat-label">Open Tournaments</span>
+              </div>
+            </div>
+            <div class="stat-card" style="border-left: 4px solid #f59e0b; cursor: pointer;" onclick="switchPortalTab('standings')">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-student-dept-points">0</span>
+                <span class="stat-label">My Dept Points</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Registered Events Live Table on Overview Dashboard -->
+          <div class="card mb-4">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <h3 style="font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <span>📋</span> <span>My Registered Sports Events</span>
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">
+                  Your registered matches, selection status, and automated OD passes:
+                </p>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-primary btn-sm" onclick="openRegistrationModal()">
+                  ➕ Register for Event
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="switchPortalTab('my-events')">
+                  View Full Details ➔
+                </button>
+              </div>
+            </div>
+
+            <div id="overview-student-events-list">
+              <div class="loading-state"><div class="spinner"></div><p>Loading your registered events...</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. STAFF / ADMIN STATS OVERVIEW GRID (Visible to Staff & Admin) -->
+        <div id="overview-staff-section">
+          <div class="stats-overview-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📅</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-portal-events">0</span>
+                <span class="stat-label">Total Sports Events</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🟢</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-portal-open-events">0</span>
+                <span class="stat-label">Open for Registration</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-portal-od-batches">0</span>
+                <span class="stat-label">Generated OD Batches</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-portal-approved-od">0</span>
+                <span class="stat-label">Approved OD Requisitions</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-portal-total-points">0</span>
+                <span class="stat-label">Championship Points</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="layout-split">
+            <div class="card">
+              <h3 style="margin-bottom: 1rem;">⚡ Quick Automation Actions</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                Direct shortcuts to trigger the On-Duty engine, take live attendance, or export official reports.
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <button class="btn btn-primary" onclick="switchPortalTab('auto-od'); openModal('generate-od-modal');">
+                  ⚡ Auto-Generate OD
+                </button>
+                <button class="btn btn-outline" onclick="switchPortalTab('attendance')">
+                  📝 Take Live Attendance
+                </button>
+                <button class="btn btn-secondary" onclick="switchPortalTab('events'); openAddEventModal();">
+                  ➕ Schedule Event
+                </button>
+                <button class="btn btn-secondary" onclick="switchPortalTab('reports')">
+                  📥 Export CSV Reports
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 1rem;">🏛️ Institution Info</h3>
+              <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+                <p><strong>Institution:</strong> National Engineering College</p>
+                <p><strong>Status:</strong> Autonomous (Anna University)</p>
+                <p><strong>Department:</strong> Physical Education & Sports</p>
+                <p><strong>Academic Year:</strong> 2026-2027</p>
+                <p style="margin-top: 0.5rem; color: var(--primary-700); font-weight: 600;">
+                  All OD passes generated comply with Autonomous Regulations for sports attendance condonation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 2: AUTOMATIC ON-DUTY (OD) ENGINE -->
+      <!-- ============================================================== -->
+      <section id="tab-view-auto-od" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Automatic On-Duty (OD) Generation Engine</h2>
+            <p class="section-subtitle">
+              Generates official reference-coded OD batches with automatic department splitting, email dispatch, and printable letterheads.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-gold" onclick="openEmailODModal()">
+              ✉️ Email OD Letter
+            </button>
+            <button class="btn btn-primary" onclick="openModal('generate-od-modal')">
+              ⚡ Auto-Generate OD Batch
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="od-filter-search" placeholder="Search by Ref No, Event, or Venue..." oninput="loadODBatchesList({ search: this.value.trim() })">
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <select class="form-select form-select-sm" style="width: auto;" onchange="loadODBatchesList({ status: this.value })">
+              <option value="All">All Statuses</option>
+              <option value="Generated">Generated</option>
+              <option value="Submitted to HOD">Submitted to HOD</option>
+              <option value="HOD Approved">HOD Approved</option>
+              <option value="Principal Sanctioned">Principal Sanctioned</option>
+            </select>
+            <select class="form-select form-select-sm" style="width: auto;" onchange="loadODBatchesList({ department: this.value })">
+              <option value="All">All Departments</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="MECH">MECH</option>
+              <option value="CIVIL">CIVIL</option>
+              <option value="IT">IT</option>
+              <option value="AIDS">AIDS</option>
+              <option value="S&H">S&H</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- OD Batches Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Reference No</th>
+                <th>Event & Session</th>
+                <th>Department</th>
+                <th>Total Students</th>
+                <th>Workflow Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="od-batches-table-body">
+              <!-- Dynamically populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 3: LIVE ATTENDANCE MANAGEMENT -->
+      <!-- ============================================================== -->
+      <section id="tab-view-attendance" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Live Event Attendance & 1-Click OD</h2>
+            <p class="section-subtitle">Mark trial/match attendance in real-time. Single-click to sanction OD for present students.</p>
+          </div>
+        </div>
+
+        <div class="card mb-4" style="padding: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1; min-width: 280px;">
+              <label class="form-label">Select Sports Event for Attendance:</label>
+              <select id="attendance-event-select" class="form-select">
+                <option value="">-- Choose Sports Event --</option>
+              </select>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: flex-end;">
+              <button class="btn btn-outline btn-sm" onclick="setAllAttendance(true)">✓ All Present</button>
+              <button class="btn btn-secondary btn-sm" onclick="setAllAttendance(false)">✗ All Absent</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive mb-4">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Register No</th>
+                <th>Student Name</th>
+                <th>Department</th>
+                <th>Year</th>
+                <th style="text-align: center;">Attendance Status</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-table-body">
+              <tr>
+                <td colspan="6" class="text-center py-4 text-muted">Please select an event above to load student roster.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="attendance-action-row" style="display: none; justify-content: flex-end; gap: 1rem;">
+          <button class="btn btn-secondary" onclick="saveAttendanceRecords(false)">
+            💾 Save Attendance Records
+          </button>
+          <button class="btn btn-primary" onclick="saveAttendanceRecords(true)">
+            ✓ Save & Auto-Generate OD
+          </button>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 4: EVENT MANAGEMENT -->
+      <!-- ============================================================== -->
+      <section id="tab-view-events" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Events Scheduling & Venue Control</h2>
+            <p class="section-subtitle">Manage athletics and team sports tournaments. Rescheduling triggers instant participant notifications.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddEventModal()">
+            ➕ Schedule New Event
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Event Name</th>
+                <th>Category</th>
+                <th>Schedule</th>
+                <th>Venue</th>
+                <th>Enrolled</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="events-table-body">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 5: PARTICIPANTS ROSTER -->
+      <!-- ============================================================== -->
+      <section id="tab-view-roster" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Participants & Athletes Master Roster</h2>
+            <p class="section-subtitle">View and update candidate qualification status (Selected, Shortlisted, Rejected).</p>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Reg No</th>
+                <th>Student Name</th>
+                <th>Dept</th>
+                <th>Year</th>
+                <th>Event</th>
+                <th>Status</th>
+                <th>Lookup</th>
+              </tr>
+            </thead>
+            <tbody id="roster-table-body">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 6: STUDENT PERSONAL OD PASSES (Self-Service) -->
+      <!-- ============================================================== -->
+      <section id="tab-view-my-od" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">My Official On-Duty (OD) Passes</h2>
+            <p class="section-subtitle">Sanctioned OD passes for your sports participation. Print personal slips for your tutor/HOD.</p>
+          </div>
+        </div>
+
+        <div id="student-personal-od-list">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 7: STUDENT REGISTERED EVENTS -->
+      <!-- ============================================================== -->
+      <section id="tab-view-my-events" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">My Registered Sports Events</h2>
+            <p class="section-subtitle">Review your enrolled events, squad selection, and trial match dates.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openRegistrationModal()">
+            🏃 Register for Another Event
+          </button>
+        </div>
+
+        <div id="student-enrolled-events-list">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 8: LEADERBOARDS (Portal View) -->
+      <!-- ============================================================== -->
+      <section id="tab-view-standings" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Department Championship Standings</h2>
+            <p class="section-subtitle">Live points leaderboard across all 8 academic departments.</p>
+          </div>
+        </div>
+
+        <div class="card" style="max-width: 800px;">
+          <div id="dept-leaderboard-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 9: OD ANALYTICS -->
+      <!-- ============================================================== -->
+      <section id="tab-view-od-analytics" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Department-Wise OD Analytics</h2>
+            <p class="section-subtitle">Track academic attendance concession balance and sports quotas by department.</p>
+          </div>
+        </div>
+
+        <div id="od-analytics-container">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 10: SPORTS POINTS MANAGEMENT -->
+      <!-- ============================================================== -->
+      <section id="tab-view-points" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Sports Championship Points Awarding</h2>
+            <p class="section-subtitle">Award tournament points to departments and individual athletes with audit log recording.</p>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Department</th>
+                <th>Current Points</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="points-dept-table-body">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 11: REPORTS & AUDIT TRAIL -->
+      <!-- ============================================================== -->
+      <section id="tab-view-reports" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Official CSV Reports & Security Audit Trail</h2>
+            <p class="section-subtitle">Download institutional reports and inspect immutable system audit logs.</p>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <h4 style="margin-bottom: 1rem;">Institutional Data Exports (CSV)</h4>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn btn-outline" onclick="exportCSV('members')">📥 Export All Members CSV</button>
+            <button class="btn btn-outline" onclick="exportCSV('attendance')">📥 Export Attendance CSV</button>
+            <button class="btn btn-outline" onclick="exportCSV('points')">📥 Export Points CSV</button>
+            <button class="btn btn-outline" onclick="exportCSV('audit')">📥 Export Audit Log CSV</button>
+          </div>
+        </div>
+
+        <h4 style="margin-bottom: 1rem;">System Audit Trail</h4>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Actor</th>
+                <th>Action</th>
+                <th>Target</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="audit-table-body">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 12: USER MANAGEMENT (Admin Only) -->
+      <!-- ============================================================== -->
+      <section id="tab-view-users" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">System User Accounts</h2>
+            <p class="section-subtitle">Manage PT staff, administrators, and student portal credentials.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('create-user-modal')">
+            ➕ Add User Account
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Email / Reg</th>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 13: MULTI-CHANNEL COMMUNICATION HUB -->
+      <!-- ============================================================== -->
+      <section id="tab-view-communication" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" data-i18n="comm_hub_title">Multi-Channel Communication Hub</h2>
+            <p class="section-subtitle" data-i18n="comm_hub_subtitle">
+              Dispatch instant alerts, OD notifications, and match schedules via WhatsApp, Official Email, and SMS.
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="openCommunicationModal()">
+            💬 <span data-i18n="compose_message">Compose Message</span>
+          </button>
+        </div>
+
+        <div class="layout-split">
+          <!-- Left Column: Channel & Compose Card -->
+          <div class="card">
+            <h3 style="margin-bottom: 1rem;" data-i18n="quick_dispatch">🚀 Quick Message Dispatch</h3>
+            
+            <label class="form-label" data-i18n="select_channel" style="font-weight: 700;">Select Communication Channel: *</label>
+            <div class="comm-channel-selector">
+              <button type="button" class="comm-channel-btn active" data-channel="whatsapp" onclick="setCommChannel('whatsapp')">
+                <span class="channel-icon">🟢</span>
+                <span class="channel-name" data-i18n="channel_whatsapp">WhatsApp</span>
+                <span class="channel-sub">Instant Chat / Group</span>
+              </button>
+              <button type="button" class="comm-channel-btn" data-channel="mail" onclick="setCommChannel('mail')">
+                <span class="channel-icon">✉️</span>
+                <span class="channel-name" data-i18n="channel_mail">Mail (Email)</span>
+                <span class="channel-sub">Official Mail Client</span>
+              </button>
+              <button type="button" class="comm-channel-btn" data-channel="sms" onclick="setCommChannel('sms')">
+                <span class="channel-icon">📱</span>
+                <span class="channel-name" data-i18n="channel_sms">SMS Text</span>
+                <span class="channel-sub">Cellular Mobile Alert</span>
+              </button>
+            </div>
+
+            <!-- Target Selection -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" data-i18n="target_audience">Target Audience / Recipient: *</label>
+                <select id="tab-comm-target-type" class="form-select" onchange="handleTabCommTargetChange()">
+                  <option value="direct">Direct Specific Contact (Individual)</option>
+                  <option value="all">All Registered Athletes (Broadcast)</option>
+                  <option value="event">Specific Event Squad</option>
+                  <option value="dept">Department-wise Students</option>
+                  <option value="hod">Department HODs & Staff</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="tab-comm-target-sub-group" style="margin-bottom: 0;">
+                <label class="form-label" id="tab-comm-target-sub-label">Select Event / Dept:</label>
+                <select id="tab-comm-target-sub-select" class="form-select" onchange="handleTabCommSubTargetChange()">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+
+            <!-- Recipient Inputs -->
+            <div id="tab-comm-direct-fields" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Recipient Mobile Phone:</label>
+                <input type="tel" id="tab-comm-recipient-phone" class="form-input" placeholder="e.g. 9876543210" value="9876543210">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Recipient Email Address:</label>
+                <input type="email" id="tab-comm-recipient-email" class="form-input" placeholder="e.g. athlete@nec.edu.in" value="sports@nec.edu.in">
+              </div>
+            </div>
+
+            <!-- Quick Template Chips -->
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" data-i18n="quick_templates">Quick Templates (Click to apply):</label>
+              <div class="comm-templates-row">
+                <button type="button" class="comm-template-chip" onclick="applyTabCommTemplate('od_approved')">⚡ OD Pass Sanctioned</button>
+                <button type="button" class="comm-template-chip" onclick="applyTabCommTemplate('trial_invitation')">⚡ Selection Trial Call</button>
+                <button type="button" class="comm-template-chip" onclick="applyTabCommTemplate('schedule_alert')">⚡ Tournament Schedule</button>
+                <button type="button" class="comm-template-chip" onclick="applyTabCommTemplate('reschedule_notice')">⚡ Match Rescheduled</button>
+                <button type="button" class="comm-template-chip" onclick="applyTabCommTemplate('trophy_points')">⚡ Championship Victory</button>
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="form-group">
+              <label class="form-label" data-i18n="message_subject">Subject / Notice Title: *</label>
+              <input type="text" id="tab-comm-subject" class="form-input" value="NEC Sports: Official OD Pass Sanction Notice">
+            </div>
+
+            <!-- Message Body -->
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <label class="form-label" style="margin-bottom: 0;" data-i18n="message_body">Message Body: *</label>
+                <span id="tab-comm-char-counter" style="font-size: 0.75rem; color: var(--text-muted);">0 characters</span>
+              </div>
+              <textarea id="tab-comm-message" class="form-textarea" rows="4" placeholder="Enter notification message here..." oninput="updateTabCommPreview()"></textarea>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="comm-preview-container">
+              <div class="comm-preview-header">
+                <span id="tab-comm-preview-title">🟢 WhatsApp Preview</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Live Preview</span>
+              </div>
+              <div id="tab-comm-preview-body"></div>
+            </div>
+
+            <!-- Send Action Row -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="copyTabCommText()">📋 Copy Text</button>
+              <button type="button" class="btn btn-whatsapp" id="tab-comm-send-btn" onclick="sendTabCommunication()">
+                🚀 Send via WhatsApp
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Broadcast History & Info -->
+          <div>
+            <div class="card mb-4">
+              <h3 style="margin-bottom: 0.75rem;">📜 Dispatch History</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Real-time log of dispatched messages and SMS/Email/WhatsApp alerts.
+              </p>
+              <div id="tab-comm-history-container" style="max-height: 400px; overflow-y: auto;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 style="margin-bottom: 0.75rem;">ℹ️ Channel Integration Guidelines</h3>
+              <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+                <p><strong>WhatsApp:</strong> Direct deep link opens wa.me with pre-encoded message. Suitable for registered athletes and captains.</p>
+                <p style="margin-top: 0.5rem;"><strong>Mail (Email):</strong> Official institutional circular dispatched via standard mail client with full subject and body.</p>
+                <p style="margin-top: 0.5rem;"><strong>SMS:</strong> Cellular SMS prompt for urgent high-priority ground/weather rescheduling notices.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB: NOTIFICATION & WHATSAPP HUB -->
+      <!-- ============================================================== -->
+      <section id="tab-view-notifications" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">🔔 Sports Notification & WhatsApp Hub</h2>
+            <p class="section-subtitle">
+              Live tournament alerts, event match results, OD approvals, and direct WhatsApp communication.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-outline btn-sm" onclick="toggleNotificationSound()" id="center-sound-btn" title="Toggle audio chime">
+              🔊 <span id="center-sound-label">Sound On</span>
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="requestPushNotificationPermission()" id="push-permission-btn" title="Enable browser notifications">
+              🔔 Enable Push Alerts
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="markAllNotificationsRead()" title="Mark all alerts as read">
+              ✓ Mark All Read
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="clearAllNotifications()" title="Clear notifications">
+              🗑️ Clear
+            </button>
+            <button class="btn btn-primary btn-sm staff-admin-only" onclick="openBroadcastModal()">
+              📢 Broadcast Notice
+            </button>
+          </div>
+        </div>
+
+        <!-- Notification Overview Metric Cards -->
+        <div class="stats-overview-grid mb-4">
+          <div class="stat-card" style="border-left: 4px solid var(--primary-600); cursor: pointer;" onclick="filterNotificationsByType('all')">
+            <div class="stat-icon">🔔</div>
+            <div class="stat-info">
+              <span class="stat-value" id="notif-stat-total">0</span>
+              <span class="stat-label">Total Notifications</span>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #ef4444; cursor: pointer;" onclick="filterNotificationsByType('unread')">
+            <div class="stat-icon">🔴</div>
+            <div class="stat-info">
+              <span class="stat-value" id="notif-stat-unread">0</span>
+              <span class="stat-label">Unread Alerts</span>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #f59e0b; cursor: pointer;" onclick="filterNotificationsByType('result')">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-info">
+              <span class="stat-value" id="notif-stat-results">0</span>
+              <span class="stat-label">Match Results</span>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #10b981; cursor: pointer;" onclick="filterNotificationsByType('od')">
+            <div class="stat-icon">🎫</div>
+            <div class="stat-info">
+              <span class="stat-value" id="notif-stat-od">0</span>
+              <span class="stat-label">OD Approvals</span>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #3b82f6; cursor: pointer;" onclick="filterNotificationsByType('points')">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+              <span class="stat-value" id="notif-stat-points">0</span>
+              <span class="stat-label">Points & Scores</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar & Search -->
+        <div class="card mb-4" style="padding: 1rem 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div class="notif-filter-bar" style="margin-bottom: 0;">
+              <button type="button" class="notif-filter-pill active" data-type="all" onclick="filterNotificationsByType('all')">
+                <span>All Alerts</span>
+                <span class="notif-pill-count" id="pill-count-all">0</span>
+              </button>
+              <button type="button" class="notif-filter-pill" data-type="result" onclick="filterNotificationsByType('result')">
+                <span>🏆 Results & Scores</span>
+                <span class="notif-pill-count" id="pill-count-result">0</span>
+              </button>
+              <button type="button" class="notif-filter-pill" data-type="od" onclick="filterNotificationsByType('od')">
+                <span>🎫 OD Sanctions</span>
+                <span class="notif-pill-count" id="pill-count-od">0</span>
+              </button>
+              <button type="button" class="notif-filter-pill" data-type="points" onclick="filterNotificationsByType('points')">
+                <span>📊 Points</span>
+                <span class="notif-pill-count" id="pill-count-points">0</span>
+              </button>
+              <button type="button" class="notif-filter-pill" data-type="alert" onclick="filterNotificationsByType('alert')">
+                <span>⚠️ Urgent Notices</span>
+                <span class="notif-pill-count" id="pill-count-alert">0</span>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; min-width: 260px;">
+              <input type="text" id="notif-search-input" class="form-input" placeholder="🔍 Search notifications..." style="font-size: 0.85rem; padding: 0.4rem 0.75rem;" oninput="handleNotifSearch(this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Feed List -->
+        <div id="notifications-feed-list">
+          <div class="loading-state"><div class="spinner"></div><p>Loading real-time notifications...</p></div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- TAB 14: PORTAL SETTINGS & THEME CUSTOMIZER -->
+      <!-- ============================================================== -->
+      <section id="tab-view-settings" class="portal-tab-content">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" data-i18n="settings_title">Portal Settings & Customization</h2>
+            <p class="section-subtitle">
+              Manage color palettes, dark/light theme, language selection, and communication preferences.
+            </p>
+          </div>
+          <button class="btn btn-secondary" onclick="resetPortalSettings()" data-i18n="reset_defaults">
+            🔄 Reset to Defaults
+          </button>
+        </div>
+
+        <div class="layout-split">
+          <div>
+            <!-- Appearance Mode Card -->
+            <div class="card mb-4">
+              <h3 style="margin-bottom: 0.5rem;" data-i18n="appearance_mode">🌓 Appearance Mode</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Select between Light Theme and sleek modern Dark Theme.
+              </p>
+              <div class="radio-pill-group">
+                <label class="radio-pill-label" onclick="applyThemeMode('light')">
+                  <input type="radio" name="tab_settings_theme_mode" id="tab-theme-mode-light" value="light" checked>
+                  <span>☀️ <strong>Light Theme</strong></span>
+                </label>
+                <label class="radio-pill-label" onclick="applyThemeMode('dark')">
+                  <input type="radio" name="tab_settings_theme_mode" id="tab-theme-mode-dark" value="dark">
+                  <span>🌙 <strong>Dark Theme</strong></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Color Palette Card -->
+            <div class="card mb-4">
+              <h3 style="margin-bottom: 0.5rem;" data-i18n="theme_colors">🎨 Sports Theme Colors & Palette</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Click any sports theme color below or pick a custom hex color. The entire portal theme updates immediately!
+              </p>
+
+              <div class="color-palette-grid">
+                <div class="color-swatch-item active" data-color="#1e3a8a" onclick="applyThemeColor('#1e3a8a')">
+                  <div class="color-swatch-dot" style="background: #1e3a8a;">✓</div>
+                  <span class="color-swatch-name">NEC Royal Blue</span>
+                </div>
+                <div class="color-swatch-item" data-color="#059669" onclick="applyThemeColor('#059669')">
+                  <div class="color-swatch-dot" style="background: #059669;"></div>
+                  <span class="color-swatch-name">Athletic Green</span>
+                </div>
+                <div class="color-swatch-item" data-color="#b91c1c" onclick="applyThemeColor('#b91c1c')">
+                  <div class="color-swatch-dot" style="background: #b91c1c;"></div>
+                  <span class="color-swatch-name">Crimson Ruby</span>
+                </div>
+                <div class="color-swatch-item" data-color="#6d28d9" onclick="applyThemeColor('#6d28d9')">
+                  <div class="color-swatch-dot" style="background: #6d28d9;"></div>
+                  <span class="color-swatch-name">Championship Violet</span>
+                </div>
+                <div class="color-swatch-item" data-color="#c2410c" onclick="applyThemeColor('#c2410c')">
+                  <div class="color-swatch-dot" style="background: #c2410c;"></div>
+                  <span class="color-swatch-name">Sunset Flame</span>
+                </div>
+                <div class="color-swatch-item" data-color="#0e7490" onclick="applyThemeColor('#0e7490')">
+                  <div class="color-swatch-dot" style="background: #0e7490;"></div>
+                  <span class="color-swatch-name">Oceanic Teal</span>
+                </div>
+                <div class="color-swatch-item" data-color="#4338ca" onclick="applyThemeColor('#4338ca')">
+                  <div class="color-swatch-dot" style="background: #4338ca;"></div>
+                  <span class="color-swatch-name">Electric Indigo</span>
+                </div>
+                <div class="color-swatch-item" data-color="#be185d" onclick="applyThemeColor('#be185d')">
+                  <div class="color-swatch-dot" style="background: #be185d;"></div>
+                  <span class="color-swatch-name">Vibrant Magenta</span>
+                </div>
+                <div class="color-swatch-item" data-color="#b45309" onclick="applyThemeColor('#b45309')">
+                  <div class="color-swatch-dot" style="background: #b45309;"></div>
+                  <span class="color-swatch-name">Trophy Gold</span>
+                </div>
+                <div class="color-swatch-item" data-color="#334155" onclick="applyThemeColor('#334155')">
+                  <div class="color-swatch-dot" style="background: #334155;"></div>
+                  <span class="color-swatch-name">Stealth Slate</span>
+                </div>
+              </div>
+
+              <!-- Custom Color Picker -->
+              <div class="custom-color-picker-row">
+                <input type="color" id="tab-custom-color" class="custom-color-picker" value="#1e3a8a" onchange="applyThemeColor(this.value)">
+                <div>
+                  <strong style="font-size: 0.9rem;" data-i18n="custom_color">Pick Any Custom Color</strong>
+                  <div style="font-size: 0.775rem; color: var(--text-muted);" data-i18n="custom_color_desc">Click to choose any color from the full RGB spectrum.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Language Selection Card -->
+            <div class="card mb-4">
+              <h3 style="margin-bottom: 0.5rem;" data-i18n="language_selection">🌐 Language & Multi-lingual Support</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Select portal display language. Instant translation across all navigation, buttons, and tables.
+              </p>
+              <div class="radio-pill-group">
+                <label class="radio-pill-label" onclick="applyLanguage('en')">
+                  <input type="radio" name="tab_settings_lang" id="tab-lang-en" value="en" checked>
+                  <span>🇬🇧 <strong>English (Default)</strong></span>
+                </label>
+                <label class="radio-pill-label" onclick="applyLanguage('ta')">
+                  <input type="radio" name="tab_settings_lang" id="tab-lang-ta" value="ta">
+                  <span>🇮🇳 <strong>தமிழ் (Tamil)</strong></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Google Account Connection Card -->
+            <div class="card mb-4">
+              <h3 style="margin-bottom: 0.5rem;" data-i18n="google_connection_title">🔗 Google Account Connection (OAuth 2.0)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;" data-i18n="google_connection_desc">
+                Link your official NEC College Google Account (@nec.edu.in) for 1-click passwordless sign-in and tournament calendar sync.
+              </p>
+              <div class="google-account-card">
+                <div style="display: flex; align-items: center; gap: 0.85rem;">
+                  <svg class="google-icon" viewBox="0 0 18 18" width="28" height="28">
+                    <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
+                    <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+                    <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.59.102-1.167.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/>
+                    <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+                  </svg>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.95rem;" id="tab-google-conn-status">Google Account Connected</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);" id="tab-google-conn-email">Checking status...</div>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-outline btn-sm" id="tab-google-link-toggle-btn" onclick="toggleGoogleConnection()">
+                    🔗 <span id="tab-google-link-btn-text">Disconnect Google</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Live Theme Preview Card -->
+          <div>
+            <div class="card" id="tab-theme-preview-box" style="border: 2px solid var(--primary-600); position: sticky; top: 90px;">
+              <h3 style="margin-bottom: 0.75rem;">👁️ Live Theme Preview</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                This preview card demonstrates your current theme colors and active typography.
+              </p>
+
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <button class="btn btn-primary btn-sm">Primary Button</button>
+                <button class="btn btn-outline btn-sm">Outline Button</button>
+                <button class="btn btn-secondary btn-sm">Secondary</button>
+              </div>
+
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <span class="badge badge-primary">Active Tag</span>
+                <span class="badge badge-success">Approved</span>
+                <span class="badge badge-warning">Pending</span>
+              </div>
+
+              <div class="stat-card" style="margin-bottom: 1rem;">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-info">
+                  <span class="stat-value">1,066</span>
+                  <span class="stat-label">Championship Points</span>
+                </div>
+              </div>
+
+              <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                ✓ Auto-saved to local browser storage.<br>
+                ✓ Persists across page reloads & sessions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: AUTO-GENERATE OD -->
+  <!-- ================================================================ -->
+  <div class="modal" id="generate-od-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">⚡ Auto-Generate Official OD Requisition</h3>
+        <button class="modal-close" onclick="closeModal('generate-od-modal')">&times;</button>
+      </div>
+      <form id="auto-od-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Select Sports Event: *</label>
+            <select id="od-event-select" class="form-select" required>
+              <option value="">-- Choose Sports Event --</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Academic Session: *</label>
+              <select id="od-session-select" class="form-select">
+                <option value="Full Day">Full Day</option>
+                <option value="Forenoon (FN)">Forenoon (FN)</option>
+                <option value="Afternoon (AN)">Afternoon (AN)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Roster Status Filter:</label>
+              <select id="od-status-filter" class="form-select">
+                <option value="Selected">Selected Only (Recommended)</option>
+                <option value="Shortlisted">Shortlisted</option>
+                <option value="All">All Registered Students</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Department Scope:</label>
+            <select id="od-dept-select" class="form-select">
+              <option value="All">All Departments</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="MECH">MECH</option>
+              <option value="CIVIL">CIVIL</option>
+              <option value="IT">IT</option>
+              <option value="AIDS">AIDS</option>
+              <option value="S&H">S&H</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="background: var(--bg-main); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-weight: 600; margin-bottom: 0.5rem;">
+              <input type="checkbox" id="od-split-dept" style="width: 18px; height: 18px;">
+              <span>Smart Split: Generate separate official letters for each HOD</span>
+            </label>
+            <div class="form-help">Automatically partitions candidates into individual official letters addressed to HOD CSE, HOD ECE, etc.</div>
+
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-weight: 600; margin-top: 0.75rem;">
+              <input type="checkbox" id="od-attendance-present-only" style="width: 18px; height: 18px;">
+              <span>Enforce Attendance: Only include students marked Present</span>
+            </label>
+            <div class="form-help">Validates candidate presence in attendance logs before granting OD.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Official Remarks / Purpose:</label>
+            <textarea id="od-remarks-input" class="form-textarea" rows="2" placeholder="e.g. Official OD sanction for Anna University Zone-18 tournament trials."></textarea>
+          </div>
+        </div>
+
+        <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('generate-od-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-generate-od">
+            ⚡ Auto-Generate Official OD Requisition
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: VIEW OD ROSTER -->
+  <!-- ================================================================ -->
+  <div class="modal" id="od-roster-modal">
+    <div class="modal-dialog" style="max-width: 850px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="od-roster-modal-title">OD Batch Roster</h3>
+        <button class="modal-close" onclick="closeModal('od-roster-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="od-roster-modal-body">
+        <!-- Injected by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: UPDATE OD WORKFLOW STATUS -->
+  <!-- ================================================================ -->
+  <div class="modal" id="update-od-status-modal">
+    <div class="modal-dialog" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Update OD Approval Status</h3>
+        <button class="modal-close" onclick="closeModal('update-od-status-modal')">&times;</button>
+      </div>
+      <form id="update-od-status-form">
+        <input type="hidden" name="batchId" id="status-batch-id">
+        <div class="modal-body">
+          <p id="status-ref-no" style="font-weight: 700; margin-bottom: 1rem; color: var(--primary-800);"></p>
+          <div class="form-group">
+            <label class="form-label">Workflow Stage: *</label>
+            <select name="status" id="new-od-status-select" class="form-select" required>
+              <option value="Generated">Generated (Draft)</option>
+              <option value="Submitted to HOD">Submitted to HOD</option>
+              <option value="HOD Approved">HOD Approved</option>
+              <option value="Principal Sanctioned">Principal Sanctioned</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Approval Comments:</label>
+            <input type="text" name="comments" class="form-input" placeholder="e.g. Cleared for college representation">
+          </div>
+        </div>
+        <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('update-od-status-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Workflow Status</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: EMAIL OD LETTER DISPATCHER -->
+  <!-- ================================================================ -->
+  <div class="modal" id="email-od-modal">
+    <div class="modal-dialog" style="max-width: 960px; width: 95%;">
+      <div class="modal-header" style="background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-800) 100%); color: white;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.4rem;">✉️</span>
+            <h3 class="modal-title" style="color: white; margin: 0; font-size: 1.25rem;">
+              Dispatch Official OD Sanction Letter via Email
+            </h3>
+          </div>
+          <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: rgba(255, 255, 255, 0.8);">
+            NEC Autonomous Sports Portal • Filter by Event & Dept, Select Students, & Email Certified Letterhead
+          </p>
+        </div>
+        <button class="modal-close" style="color: white;" onclick="closeModal('email-od-modal')">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.25rem; max-height: calc(85vh - 120px); overflow-y: auto;">
+
+        <!-- STEP 1: FILTERS & CRITERIA -->
+        <div class="card mb-3" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 1rem; border-radius: var(--radius-md);">
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--primary-800); text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span>🎯</span> <span>Step 1: Filter & Choose Student Athletes</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+            <div class="form-group mb-1">
+              <label class="form-label" style="font-size: 0.8rem;">1. Filter by Sports Event: *</label>
+              <select id="email-od-event-filter" class="form-select form-select-sm" onchange="filterEmailODStudents()">
+                <option value="All">All Events</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-1">
+              <label class="form-label" style="font-size: 0.8rem;">2. Filter by Department: *</label>
+              <select id="email-od-dept-filter" class="form-select form-select-sm" onchange="filterEmailODStudents()">
+                <option value="All">All Departments</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+                <option value="CIVIL">CIVIL</option>
+                <option value="IT">IT</option>
+                <option value="AIDS">AIDS</option>
+                <option value="S&H">S&H</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-1">
+              <label class="form-label" style="font-size: 0.8rem;">3. Status Filter:</label>
+              <select id="email-od-status-filter" class="form-select form-select-sm" onchange="filterEmailODStudents()">
+                <option value="All">All Registered Students</option>
+                <option value="Selected" selected>Selected Only (Recommended)</option>
+                <option value="Shortlisted">Shortlisted Only</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-1">
+              <label class="form-label" style="font-size: 0.8rem;">4. Search by Name / Reg No:</label>
+              <input type="text" id="email-od-search-input" class="form-input form-input-sm" placeholder="Search student name or reg..." oninput="filterEmailODStudents()">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: STUDENT SELECTION ROSTER -->
+        <div class="card mb-3" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 1rem; border-radius: var(--radius-md);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--primary-800); text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem;">
+              <span>👥</span>
+              <span>Step 2: Select Students to Email (<span id="email-od-selected-count" class="badge badge-primary">0</span> / <span id="email-od-visible-count">0</span> Selected)</span>
+            </div>
+            <div style="display: flex; gap: 0.4rem;">
+              <button type="button" class="btn btn-outline btn-sm" style="padding: 3px 8px; font-size: 0.75rem;" onclick="selectAllFilteredEmailStudents(true)">
+                ✓ Select All
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" style="padding: 3px 8px; font-size: 0.75rem;" onclick="selectAllFilteredEmailStudents(false)">
+                ✗ Clear Selection
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive" style="max-height: 220px; overflow-y: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+            <table class="data-table" style="font-size: 0.85rem;">
+              <thead style="position: sticky; top: 0; background: var(--bg-card); z-index: 10;">
+                <tr>
+                  <th style="width: 40px; text-align: center;">
+                    <input type="checkbox" id="email-od-check-all" onchange="toggleSelectAllEmailStudents(this)" title="Select/Deselect All">
+                  </th>
+                  <th>Reg No</th>
+                  <th>Student Name</th>
+                  <th>Department & Year</th>
+                  <th>Sports Event</th>
+                  <th>Status</th>
+                  <th>Student Email</th>
+                </tr>
+              </thead>
+              <tbody id="email-od-student-table-body">
+                <!-- Dynamically loaded by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- STEP 3: EMAIL MESSAGE & CC CONFIGURATION -->
+        <div class="card mb-3" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 1rem; border-radius: var(--radius-md);">
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--primary-800); text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span>📨</span> <span>Step 3: Email Subject & Dispatch Details</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <div class="form-group mb-0">
+              <label class="form-label" style="font-size: 0.8rem;">Email Subject Line: *</label>
+              <input type="text" id="email-od-subject-input" class="form-input form-input-sm" value="🏛️ Official NEC Sports OD Sanction Letter — Tournament" required>
+            </div>
+            <div class="form-group mb-0">
+              <label class="form-label" style="font-size: 0.8rem;">OD Session: *</label>
+              <select id="email-od-session-select" class="form-select form-select-sm" onchange="updateEmailODPreview()">
+                <option value="Full Day">Full Day</option>
+                <option value="Forenoon (FN)">Forenoon (FN)</option>
+                <option value="Afternoon (AN)">Afternoon (AN)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group mb-2">
+            <label class="form-label" style="font-size: 0.8rem;">
+              CC to Department HOD / Class Tutor / Warden (Optional):
+            </label>
+            <input type="text" id="email-od-cc-input" class="form-input form-input-sm" placeholder="e.g. hodcse@nec.edu.in, advisor@nec.edu.in">
+            <div class="form-help" style="font-size: 0.75rem; margin-top: 2px;">
+              Separate multiple emails with commas. HODs will receive a consolidated roster sanction order copy.
+            </div>
+          </div>
+
+          <div class="form-group mb-1">
+            <label class="form-label" style="font-size: 0.8rem;">Official Sanction Purpose / Remarks:</label>
+            <textarea id="email-od-remarks-input" class="form-textarea" rows="2" style="font-size: 0.85rem;" placeholder="e.g. Granted official OD attendance sanction for representing NEC in Anna University Zonal Tournament. Attendance regularization authorized." oninput="updateEmailODPreview()"></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 4: LIVE LETTERHEAD PREVIEW ACCORDION -->
+        <div class="card" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 1rem; border-radius: var(--radius-md);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--primary-800); text-transform: uppercase; display: flex; align-items: center; gap: 0.4rem;">
+              <span>📜</span> <span>Step 4: Official Letterhead Preview</span>
+            </div>
+            <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-od-preview" onclick="toggleEmailODPreview()" style="padding: 2px 8px; font-size: 0.75rem;">
+              👁️ Show Letterhead Preview
+            </button>
+          </div>
+
+          <div id="email-od-letterhead-preview-container" style="display: none; margin-top: 0.75rem;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem;" id="email-od-preview-student-notice">
+              Previewing personalized letter for selected student.
+            </div>
+            <div id="email-od-letterhead-preview" style="max-height: 280px; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: var(--radius-sm); padding: 0.75rem; background: #ffffff; color: #1e293b;">
+              <!-- Live letterhead HTML rendered by app.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer" style="padding: 1rem 1.25rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+        <div>
+          <button type="button" class="btn btn-outline btn-sm" onclick="openMailtoODFallback()" title="Open selected student emails in your mail application (Outlook/Gmail)">
+            📬 Open in Webmail (mailto:)
+          </button>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('email-od-modal')">Close</button>
+          <button type="button" class="btn btn-primary" id="btn-send-email-od" onclick="handleSendEmailODSubmit()">
+            📧 Send OD Letters via Email (<span id="email-od-send-count">0</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: SCHEDULE / EDIT EVENT -->
+  <!-- ================================================================ -->
+  <div class="modal" id="event-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="event-modal-title">Schedule Sports Event</h3>
+        <button class="modal-close" onclick="closeModal('event-modal')">&times;</button>
+      </div>
+      <form id="event-form">
+        <input type="hidden" id="event-form-id">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Event Name: *</label>
+            <input type="text" name="name" class="form-input" required placeholder="e.g. 100m Running, Football Championship">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Category: *</label>
+              <select name="category" class="form-select">
+                <option value="Athletics">Athletics</option>
+                <option value="Team Sport">Team Sport</option>
+                <option value="Racket">Racket</option>
+                <option value="Combat">Combat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Type: *</label>
+              <select name="type" class="form-select">
+                <option value="Individual">Individual</option>
+                <option value="Team">Team</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Venue: *</label>
+            <input type="text" name="venue" class="form-input" required placeholder="e.g. Main Stadium, Indoor Badminton Hall">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Date: *</label>
+              <input type="date" name="date" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Time: *</label>
+              <input type="text" name="time" class="form-input" placeholder="09:00 AM">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Status: *</label>
+              <select name="status" class="form-select">
+                <option value="Open">Open</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Participant Capacity Limit: *</label>
+              <input type="number" name="limit" class="form-input" value="40" min="1">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description:</label>
+            <textarea name="description" class="form-textarea" rows="2" placeholder="Rules, qualification details, etc."></textarea>
+          </div>
+        </div>
+
+        <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('event-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: AWARD POINTS -->
+  <!-- ================================================================ -->
+  <div class="modal" id="award-points-modal">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Award Sports Championship Points</h3>
+        <button class="modal-close" onclick="closeModal('award-points-modal')">&times;</button>
+      </div>
+      <form id="award-points-form">
+        <input type="hidden" name="type" id="points-type">
+        <input type="hidden" name="target" id="points-target">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Points to Add (+): *</label>
+            <input type="number" name="points" class="form-input" required min="1" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Award Reason: *</label>
+            <input type="text" name="reason" class="form-input" required placeholder="e.g. 1st Place Football Championship Trophy">
+          </div>
+        </div>
+        <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('award-points-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Award Points</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: CREATE USER -->
+  <!-- ================================================================ -->
+  <div class="modal" id="create-user-modal">
+    <div class="modal-dialog" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Add System User Account</h3>
+        <button class="modal-close" onclick="closeModal('create-user-modal')">&times;</button>
+      </div>
+      <form id="create-user-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Full Name: *</label>
+            <input type="text" name="name" class="form-input" required placeholder="e.g. Dr. K. Ramesh">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email: *</label>
+            <input type="email" name="email" class="form-input" required placeholder="e.g. sportsstaff2@nec.edu.in">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password: *</label>
+            <input type="password" name="password" class="form-input" required minlength="6">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Role: *</label>
+              <select name="role" class="form-select">
+                <option value="student">Student</option>
+                <option value="staff">PT Staff</option>
+                <option value="admin">Administrator</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Department:</label>
+              <input type="text" name="dept" class="form-input" placeholder="e.g. CSE / ECE / Physical Education">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Register Number (for Students):</label>
+            <input type="text" name="reg" class="form-input" placeholder="e.g. 24104015">
+          </div>
+        </div>
+        <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('create-user-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: CONCLUDE EVENT & PUBLISH RESULTS -->
+  <!-- ================================================================ -->
+  <div class="modal" id="event-result-modal">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">🏆 Conclude Event & Publish Results</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
+            Enter match results, automated score difference, and trigger WhatsApp notifications to all participants.
+          </p>
+        </div>
+        <button class="modal-close" onclick="closeModal('event-result-modal')">&times;</button>
+      </div>
+      <form id="event-result-form" onsubmit="handleConcludeEventSubmit(event)">
+        <input type="hidden" id="event-result-id">
+        <div class="modal-body">
+          <div class="card mb-3" style="background: var(--bg-main); padding: 0.85rem 1rem;">
+            <div style="font-weight: 700; color: var(--primary-700); font-size: 1.05rem;" id="event-result-name-display">Event Name</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);" id="event-result-meta-display">Date • Venue</div>
+          </div>
+
+          <!-- Winner vs Runner Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <!-- Winner Block -->
+            <div style="border: 2px solid #f59e0b; border-radius: var(--radius-md); padding: 0.85rem; background: rgba(245, 158, 11, 0.04);">
+              <label class="form-label" style="color: #b45309; font-weight: 800;">🥇 Winner / Champion: *</label>
+              <input type="text" id="event-result-winner" class="form-input" placeholder="e.g. CSE or Athlete Name" required oninput="updateScoreDiffPreview()">
+              <label class="form-label mt-2" style="font-size: 0.8rem;">Winner Points / Score: *</label>
+              <input type="number" id="event-result-winner-pts" class="form-input" value="50" min="0" required oninput="updateScoreDiffPreview()">
+            </div>
+
+            <!-- Runner-up Block -->
+            <div style="border: 2px solid #94a3b8; border-radius: var(--radius-md); padding: 0.85rem; background: rgba(148, 163, 184, 0.05);">
+              <label class="form-label" style="color: #475569; font-weight: 800;">🥈 Runner-Up: *</label>
+              <input type="text" id="event-result-runner" class="form-input" placeholder="e.g. ECE or Athlete Name" required oninput="updateScoreDiffPreview()">
+              <label class="form-label mt-2" style="font-size: 0.8rem;">Runner-up Points / Score: *</label>
+              <input type="number" id="event-result-runner-pts" class="form-input" value="35" min="0" required oninput="updateScoreDiffPreview()">
+            </div>
+          </div>
+
+          <!-- Live Score Difference Indicator -->
+          <div class="card mb-3 text-center" style="background: linear-gradient(135deg, #1e3a8a, #0f172a); color: white; padding: 0.85rem;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8;">Automated Score Margin</div>
+            <div id="event-result-diff-display" style="font-size: 1.4rem; font-weight: 800; color: #fbbf24; margin: 0.25rem 0;">
+              Score Difference: 15 Points Lead
+            </div>
+            <div style="font-size: 0.75rem; opacity: 0.85;">
+              Calculated automatically from final scores
+            </div>
+          </div>
+
+          <!-- Top Performer & Highlights -->
+          <div class="form-group">
+            <label class="form-label">⭐ Top Performer / MVP (Optional):</label>
+            <input type="text" id="event-result-top-performer" class="form-input" placeholder="e.g. Kavin Raj (CSE) - 3 Goals / Highest Scorer">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">📝 Match Highlights / Summary:</label>
+            <textarea id="event-result-summary" class="form-textarea" rows="2" placeholder="e.g. Sensational final clash! CSE secured victory after an intense overtime battle."></textarea>
+          </div>
+
+          <!-- Automation Checkboxes -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; background: var(--bg-main); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="event-result-auto-points" checked>
+              <span><strong>Auto-award points</strong> to Department & Student Leaderboards</span>
+            </label>
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="event-result-notify-participants" checked>
+              <span><strong>Dispatch In-App Notification</strong> to all registered athletes</span>
+            </label>
+            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="event-result-whatsapp-prompt" checked>
+              <span><strong>Open WhatsApp Broadcast Hub</strong> with participant directory</span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('event-result-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="event-result-submit-btn">
+            🏆 Conclude & Publish Results
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: WHATSAPP RESULTS BROADCAST HUB -->
+  <!-- ================================================================ -->
+  <div class="modal" id="whatsapp-results-modal">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <div class="modal-header" style="background: #25D366; color: white;">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 1.5rem;">🟢</span>
+          <div>
+            <h3 class="modal-title" style="color: white; margin: 0;">WhatsApp Results Broadcast Hub</h3>
+            <p style="font-size: 0.8rem; opacity: 0.95; margin: 0;">Instant match result dispatch to participating students and squads</p>
+          </div>
+        </div>
+        <button class="modal-close" style="color: white;" onclick="closeModal('whatsapp-results-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Match Summary Card -->
+        <div id="whatsapp-results-summary-card" class="score-difference-card mb-3">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- WhatsApp Chat Preview -->
+        <div style="margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <label class="form-label" style="font-weight: 700; margin-bottom: 0;">WhatsApp Announcement Message:</label>
+            <button type="button" class="btn btn-outline btn-sm" onclick="copyWhatsAppResultText()">📋 Copy Text</button>
+          </div>
+          <div class="whatsapp-chat-bubble">
+            <div class="whatsapp-msg-box" id="whatsapp-result-text-preview"></div>
+          </div>
+        </div>
+
+        <!-- Primary Broadcast Action Buttons -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+          <button type="button" class="btn btn-whatsapp" style="flex: 1;" onclick="openWhatsAppBroadcastDirect()">
+            🚀 Broadcast Announcement on WhatsApp (Web / Mobile)
+          </button>
+        </div>
+
+        <!-- Participating Athletes WhatsApp Directory -->
+        <div class="card" style="padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <div>
+              <h4 style="margin: 0; font-size: 0.95rem;">👥 Registered Participants (<span id="whatsapp-participants-count">0</span>)</h4>
+              <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0;">Send individual result notifications directly to athlete WhatsApp</p>
+            </div>
+          </div>
+          <div id="whatsapp-participants-list" style="max-height: 250px; overflow-y: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('whatsapp-results-modal')">Close Hub</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: HOD OD WHATSAPP DISPATCH -->
+  <!-- ================================================================ -->
+  <div class="modal" id="hod-od-whatsapp-modal">
+    <div class="modal-dialog" style="max-width: 700px;">
+      <div class="modal-header" style="background: #1e3a8a; color: white;">
+        <div>
+          <h3 class="modal-title" style="color: white; margin: 0;">📋 Dispatch OD Requisition to HOD via WhatsApp</h3>
+          <p style="font-size: 0.8rem; opacity: 0.9; margin: 0;">Automated official requisition roster forwarded to Head of Department</p>
+        </div>
+        <button class="modal-close" style="color: white;" onclick="closeModal('hod-od-whatsapp-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Recipient Department HOD: *</label>
+            <select id="hod-dept-select" class="form-select" onchange="handleHODDeptSelect(this.value)">
+              <option value="CSE">HOD / CSE Department</option>
+              <option value="ECE">HOD / ECE Department</option>
+              <option value="IT">HOD / IT Department</option>
+              <option value="EEE">HOD / EEE Department</option>
+              <option value="MECH">HOD / MECH Department</option>
+              <option value="CIVIL">HOD / CIVIL Department</option>
+              <option value="AIDS">HOD / AIDS Department</option>
+              <option value="S&H">HOD / Science & Humanities</option>
+              <option value="custom">Enter Custom Contact</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">HOD WhatsApp / Mobile Number: *</label>
+            <input type="tel" id="hod-whatsapp-phone" class="form-input" placeholder="e.g. 9876543210" value="9876543210">
+          </div>
+        </div>
+
+        <!-- Official Letter WhatsApp Preview -->
+        <div style="margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <label class="form-label" style="font-weight: 700; margin-bottom: 0;">Official Letterhead Format (Pre-encoded):</label>
+            <button type="button" class="btn btn-outline btn-sm" onclick="copyHODODText()">📋 Copy Text</button>
+          </div>
+          <div class="whatsapp-chat-bubble">
+            <div class="whatsapp-msg-box" id="hod-od-text-preview"></div>
+          </div>
+        </div>
+
+        <!-- Action Row -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button type="button" class="btn btn-whatsapp" style="flex: 1;" onclick="sendHODWhatsAppDirect()">
+            🚀 Send OD Requisition to HOD Mam/Sir on WhatsApp
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="markHODODDispatched()">
+            ✓ Record as Sent
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer" style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('hod-od-whatsapp-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: BROADCAST CUSTOM NOTICE -->
+  <!-- ================================================================ -->
+  <div class="modal" id="broadcast-notification-modal">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">📢 Broadcast Sports Announcement</h3>
+        <button class="modal-close" onclick="closeModal('broadcast-notification-modal')">&times;</button>
+      </div>
+      <form id="broadcast-notification-form" onsubmit="handleBroadcastSubmit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Notice Title: *</label>
+            <input type="text" id="broadcast-title" class="form-input" placeholder="e.g. Selection Trials for Inter-College Badminton" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Category: *</label>
+              <select id="broadcast-type" class="form-select">
+                <option value="general">📢 General Announcement</option>
+                <option value="alert">⚠️ Urgent Ground / Schedule Alert</option>
+                <option value="od">🎫 OD Pass Update</option>
+                <option value="result">🏆 Match Result</option>
+                <option value="points">📊 Points Leaderboard</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Target Audience: *</label>
+              <select id="broadcast-target-role" class="form-select">
+                <option value="all">Everyone (Students & Staff)</option>
+                <option value="student">Students Only</option>
+                <option value="staff">Staff & HODs Only</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message Content: *</label>
+            <textarea id="broadcast-body" class="form-textarea" rows="4" placeholder="Enter notification message details..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer" style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('broadcast-notification-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">🚀 Broadcast Notice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: NOTIFICATIONS -->
+  <!-- ================================================================ -->
+  <div class="modal" id="notifications-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">🔔 Sports Announcements & Alerts</h3>
+        <button class="modal-close" onclick="closeModal('notifications-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="notifications-modal-list">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+  </div>
+  <!-- ================================================================ -->
+  <!-- MODAL: COMMUNICATION HUB (WhatsApp, Mail, SMS) -->
+  <!-- ================================================================ -->
+  <div class="modal" id="communication-modal">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" data-i18n="comm_hub_title">💬 Sports Multi-Channel Communication Hub</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;" data-i18n="comm_hub_subtitle">
+            Send instant notifications & OD updates via WhatsApp, Email, or SMS to athletes and staff.
+          </p>
+        </div>
+        <button class="modal-close" onclick="closeModal('communication-modal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 1. Channel Selector (WhatsApp, Mail, SMS) -->
+        <label class="form-label" data-i18n="select_channel" style="font-weight: 700; margin-bottom: 0.5rem;">Select Communication Channel: *</label>
+        <div class="comm-channel-selector">
+          <button type="button" class="comm-channel-btn active" data-channel="whatsapp" onclick="setCommChannel('whatsapp')">
+            <span class="channel-icon">🟢</span>
+            <span class="channel-name" data-i18n="channel_whatsapp">WhatsApp</span>
+            <span class="channel-sub">Instant Web/App Chat</span>
+          </button>
+          <button type="button" class="comm-channel-btn" data-channel="mail" onclick="setCommChannel('mail')">
+            <span class="channel-icon">✉️</span>
+            <span class="channel-name" data-i18n="channel_mail">Mail (Email)</span>
+            <span class="channel-sub">Official Mail Client</span>
+          </button>
+          <button type="button" class="comm-channel-btn" data-channel="sms" onclick="setCommChannel('sms')">
+            <span class="channel-icon">📱</span>
+            <span class="channel-name" data-i18n="channel_sms">SMS Text</span>
+            <span class="channel-sub">Mobile Cellular SMS</span>
+          </button>
+        </div>
+
+        <!-- 2. Target Audience Selection -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" data-i18n="target_audience">Target Audience / Recipient: *</label>
+            <select id="comm-target-type" class="form-select" onchange="handleCommTargetChange()">
+              <option value="direct">Direct Specific Contact (Individual)</option>
+              <option value="all">All Registered Athletes (Broadcast)</option>
+              <option value="event">Specific Event Squad</option>
+              <option value="dept">Department-wise Students</option>
+              <option value="hod">Department HODs & PT Staff</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="comm-target-sub-group" style="margin-bottom: 0;">
+            <label class="form-label" id="comm-target-sub-label">Select Event / Dept:</label>
+            <select id="comm-target-sub-select" class="form-select" onchange="handleCommSubTargetChange()">
+              <!-- Populated dynamically by app.js -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Direct Contact Fields -->
+        <div id="comm-direct-fields" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" id="comm-recipient-phone-label">Mobile Phone (for WhatsApp & SMS):</label>
+            <input type="tel" id="comm-recipient-phone" class="form-input" placeholder="e.g. 9876543210" value="9876543210">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" id="comm-recipient-email-label">Email Address (for Mail):</label>
+            <input type="email" id="comm-recipient-email" class="form-input" placeholder="e.g. 24104016@nec.edu.in" value="sports@nec.edu.in">
+          </div>
+        </div>
+
+        <!-- 3. Quick Message Templates -->
+        <div style="margin-bottom: 1rem;">
+          <label class="form-label" data-i18n="quick_templates">Quick Message Templates (Click to fill):</label>
+          <div class="comm-templates-row">
+            <button type="button" class="comm-template-chip" onclick="applyCommTemplate('od_approved')">⚡ OD Pass Sanctioned</button>
+            <button type="button" class="comm-template-chip" onclick="applyCommTemplate('trial_invitation')">⚡ Selection Trial Call</button>
+            <button type="button" class="comm-template-chip" onclick="applyCommTemplate('schedule_alert')">⚡ Match Schedule Notice</button>
+            <button type="button" class="comm-template-chip" onclick="applyCommTemplate('reschedule_notice')">⚡ Weather / Reschedule Alert</button>
+            <button type="button" class="comm-template-chip" onclick="applyCommTemplate('trophy_points')">⚡ Championship Victory</button>
+          </div>
+        </div>
+
+        <!-- Subject Field (Used for Mail and SMS tag) -->
+        <div class="form-group" id="comm-subject-group">
+          <label class="form-label" data-i18n="message_subject">Subject / Notice Title: *</label>
+          <input type="text" id="comm-subject" class="form-input" placeholder="e.g. NEC Sports: Official OD Pass Sanction Notification" value="NEC Sports: Official On-Duty (OD) Pass Sanctioned">
+        </div>
+
+        <!-- Message Body -->
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label class="form-label" style="margin-bottom: 0;" data-i18n="message_body">Message Content: *</label>
+            <span id="comm-char-counter" style="font-size: 0.75rem; color: var(--text-muted);">0 characters</span>
+          </div>
+          <textarea id="comm-message" class="form-textarea" rows="4" placeholder="Type your notification message here..." oninput="updateCommPreview()"></textarea>
+        </div>
+
+        <!-- 4. Interactive Live Preview Box -->
+        <div class="comm-preview-container">
+          <div class="comm-preview-header">
+            <span id="comm-preview-title">🟢 WhatsApp Live Preview</span>
+            <span style="font-size: 0.7rem; font-weight: 500; color: var(--text-muted);">Recipient sees:</span>
+          </div>
+          <div id="comm-preview-body">
+            <!-- Dynamically rendered preview based on selected channel -->
+          </div>
+        </div>
+
+        <!-- 5. Dispatch History Accordion / Toggle -->
+        <details style="margin-top: 1rem; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.6rem 0.85rem;">
+          <summary style="font-size: 0.825rem; font-weight: 700; cursor: pointer; color: var(--text-muted);" data-i18n="delivery_log">
+            📜 View Dispatched Messages History (<span id="comm-history-count">0</span>)
+          </summary>
+          <div id="comm-history-list" style="margin-top: 0.75rem; max-height: 150px; overflow-y: auto;">
+            <!-- Populated by app.js -->
+          </div>
+        </details>
+      </div>
+
+      <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="copyCommMessageText()">📋 Copy Text</button>
+        <div style="display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('communication-modal')" data-i18n="cancel">Cancel</button>
+          <button type="button" class="btn btn-whatsapp" id="comm-send-btn" onclick="sendCommunicationMessage()">
+            🚀 Send via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: SETTINGS & APPEARANCE (Themes, Colors, Languages) -->
+  <!-- ================================================================ -->
+  <div class="modal" id="settings-modal">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" data-i18n="settings_title">⚙️ Portal Settings & Customization</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
+            Personalize theme colors, toggle dark/light mode, and switch portal language.
+          </p>
+        </div>
+        <button class="modal-close" onclick="closeModal('settings-modal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Section 1: Appearance Mode (Light vs Dark) -->
+        <div class="settings-section-card">
+          <div class="settings-section-title">
+            <span>🌓</span>
+            <span data-i18n="appearance_mode">Appearance Mode</span>
+          </div>
+          <div class="settings-section-desc" data-i18n="appearance_mode_desc">
+            Toggle between clean crisp Light theme and modern glassmorphic Dark theme.
+          </div>
+          <div class="radio-pill-group">
+            <label class="radio-pill-label" onclick="applyThemeMode('light')">
+              <input type="radio" name="settings_theme_mode" id="theme-mode-light" value="light" checked>
+              <span>☀️ <strong data-i18n="light_theme">Light Theme</strong></span>
+            </label>
+            <label class="radio-pill-label" onclick="applyThemeMode('dark')">
+              <input type="radio" name="settings_theme_mode" id="theme-mode-dark" value="dark">
+              <span>🌙 <strong data-i18n="dark_theme">Dark Theme</strong></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Section 2: Color Palette (Theme Colors) -->
+        <div class="settings-section-card">
+          <div class="settings-section-title">
+            <span>🎨</span>
+            <span data-i18n="theme_colors">Sports Theme Colors & Palette</span>
+          </div>
+          <div class="settings-section-desc" data-i18n="theme_colors_desc">
+            Choose a signature college sports theme color or select your own custom color. All buttons, highlights, and cards update dynamically!
+          </div>
+
+          <!-- Color Swatches Grid -->
+          <div class="color-palette-grid" id="color-palette-grid">
+            <div class="color-swatch-item active" data-color="#1e3a8a" onclick="applyThemeColor('#1e3a8a')">
+              <div class="color-swatch-dot" style="background: #1e3a8a;">✓</div>
+              <span class="color-swatch-name">NEC Royal Blue</span>
+            </div>
+            <div class="color-swatch-item" data-color="#059669" onclick="applyThemeColor('#059669')">
+              <div class="color-swatch-dot" style="background: #059669;"></div>
+              <span class="color-swatch-name">Athletic Green</span>
+            </div>
+            <div class="color-swatch-item" data-color="#b91c1c" onclick="applyThemeColor('#b91c1c')">
+              <div class="color-swatch-dot" style="background: #b91c1c;"></div>
+              <span class="color-swatch-name">Crimson Ruby</span>
+            </div>
+            <div class="color-swatch-item" data-color="#6d28d9" onclick="applyThemeColor('#6d28d9')">
+              <div class="color-swatch-dot" style="background: #6d28d9;"></div>
+              <span class="color-swatch-name">Championship Violet</span>
+            </div>
+            <div class="color-swatch-item" data-color="#c2410c" onclick="applyThemeColor('#c2410c')">
+              <div class="color-swatch-dot" style="background: #c2410c;"></div>
+              <span class="color-swatch-name">Sunset Flame</span>
+            </div>
+            <div class="color-swatch-item" data-color="#0e7490" onclick="applyThemeColor('#0e7490')">
+              <div class="color-swatch-dot" style="background: #0e7490;"></div>
+              <span class="color-swatch-name">Oceanic Teal</span>
+            </div>
+            <div class="color-swatch-item" data-color="#4338ca" onclick="applyThemeColor('#4338ca')">
+              <div class="color-swatch-dot" style="background: #4338ca;"></div>
+              <span class="color-swatch-name">Electric Indigo</span>
+            </div>
+            <div class="color-swatch-item" data-color="#be185d" onclick="applyThemeColor('#be185d')">
+              <div class="color-swatch-dot" style="background: #be185d;"></div>
+              <span class="color-swatch-name">Vibrant Magenta</span>
+            </div>
+            <div class="color-swatch-item" data-color="#b45309" onclick="applyThemeColor('#b45309')">
+              <div class="color-swatch-dot" style="background: #b45309;"></div>
+              <span class="color-swatch-name">Trophy Gold</span>
+            </div>
+            <div class="color-swatch-item" data-color="#334155" onclick="applyThemeColor('#334155')">
+              <div class="color-swatch-dot" style="background: #334155;"></div>
+              <span class="color-swatch-name">Stealth Slate</span>
+            </div>
+          </div>
+
+          <!-- Custom Color Picker Input -->
+          <div class="custom-color-picker-row">
+            <input type="color" id="settings-custom-color" class="custom-color-picker" value="#1e3a8a" onchange="applyThemeColor(this.value)">
+            <div>
+              <strong style="font-size: 0.9rem;" data-i18n="custom_color">Pick Any Custom Color</strong>
+              <div style="font-size: 0.775rem; color: var(--text-muted);" data-i18n="custom_color_desc">Click the color circle to pick any hex color from the full spectrum.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Language & Localization -->
+        <div class="settings-section-card">
+          <div class="settings-section-title">
+            <span>🌐</span>
+            <span data-i18n="language_selection">Language & Multi-lingual Support</span>
+          </div>
+          <div class="settings-section-desc" data-i18n="language_selection_desc">
+            Switch entire portal interface between English and தமிழ் (Tamil).
+          </div>
+          <div class="radio-pill-group">
+            <label class="radio-pill-label" onclick="applyLanguage('en')">
+              <input type="radio" name="settings_lang" id="lang-en" value="en" checked>
+              <span>🇬🇧 <strong>English (Default)</strong></span>
+            </label>
+            <label class="radio-pill-label" onclick="applyLanguage('ta')">
+              <input type="radio" name="settings_lang" id="lang-ta" value="ta">
+              <span>🇮🇳 <strong>தமிழ் (Tamil)</strong></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Section 4: Default Communication Channel -->
+        <div class="settings-section-card">
+          <div class="settings-section-title">
+            <span>📡</span>
+            <span data-i18n="comm_preferences">Communication Preferences</span>
+          </div>
+          <div class="settings-section-desc" data-i18n="comm_preferences_desc">
+            Select preferred dispatch channel for quick messaging shortcuts.
+          </div>
+          <div class="radio-pill-group">
+            <label class="radio-pill-label" onclick="setDefaultCommChannel('whatsapp')">
+              <input type="radio" name="settings_comm_default" id="comm-pref-whatsapp" value="whatsapp" checked>
+              <span>🟢 <strong>WhatsApp</strong></span>
+            </label>
+            <label class="radio-pill-label" onclick="setDefaultCommChannel('mail')">
+              <input type="radio" name="settings_comm_default" id="comm-pref-mail" value="mail">
+              <span>✉️ <strong>Mail (Email)</strong></span>
+            </label>
+            <label class="radio-pill-label" onclick="setDefaultCommChannel('sms')">
+              <input type="radio" name="settings_comm_default" id="comm-pref-sms" value="sms">
+              <span>📱 <strong>SMS</strong></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Section 5: Google Account Connection (OAuth 2.0) -->
+        <div class="settings-section-card">
+          <div class="settings-section-title">
+            <svg class="google-icon" viewBox="0 0 18 18" width="18" height="18" style="vertical-align: middle;">
+              <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
+              <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+              <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.59.102-1.167.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/>
+              <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+            </svg>
+            <span data-i18n="google_connection_title">Google Account Connection (OAuth 2.0)</span>
+          </div>
+          <div class="settings-section-desc" data-i18n="google_connection_desc">
+            Link your official NEC College Google Account (@nec.edu.in) for 1-click passwordless sign-in and tournament calendar sync.
+          </div>
+          <div class="google-account-card">
+            <div style="display: flex; align-items: center; gap: 0.85rem;">
+              <svg class="google-icon" viewBox="0 0 18 18" width="28" height="28">
+                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
+                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+                <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.59.102-1.167.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/>
+                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+              </svg>
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem;" id="google-conn-status">Google Account Connected</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);" id="google-conn-email">Checking status...</div>
+              </div>
+            </div>
+            <div id="google-conn-action">
+              <button type="button" class="btn btn-outline btn-sm" id="google-link-toggle-btn" onclick="toggleGoogleConnection()">
+                🔗 <span id="google-link-btn-text">Disconnect Google</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="resetPortalSettings()" data-i18n="reset_defaults">🔄 Reset to Defaults</button>
+        <button type="button" class="btn btn-primary" onclick="closeModal('settings-modal')" data-i18n="save_settings">✓ Save & Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: EVENT REGISTRATION (Student Self-Service) -->
+  <!-- ================================================================ -->
+  <div class="modal" id="registration-modal">
+    <div class="modal-dialog" style="max-width: 560px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">🏃 Register for Sports Tournament</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Official NEC Autonomous Sports Representation Registration</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('registration-modal')">&times;</button>
+      </div>
+      <form id="portal-event-registration-form">
+        <div class="modal-body">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Register Number: *</label>
+              <input type="text" name="regno" id="portal-reg-regno" class="form-input" required placeholder="e.g. 24104016">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Full Name: *</label>
+              <input type="text" name="name" id="portal-reg-name" class="form-input" required placeholder="e.g. Bhavana Lakshmi">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Department: *</label>
+              <select name="dept" id="portal-reg-dept" class="form-select" required>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+                <option value="CIVIL">CIVIL</option>
+                <option value="IT">IT</option>
+                <option value="AIDS">AIDS</option>
+                <option value="S&H">S&H</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Year of Study: *</label>
+              <select name="year" id="portal-reg-year" class="form-select">
+                <option value="I Year">I Year</option>
+                <option value="II Year">II Year</option>
+                <option value="III Year" selected>III Year</option>
+                <option value="IV Year">IV Year</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Gender: *</label>
+              <select name="gender" id="portal-reg-gender" class="form-select">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Select Tournament Event: *</label>
+              <select name="event" id="portal-reg-event-select" class="form-select" required onchange="updateEventRegPreview(this.value)">
+                <!-- Populated dynamically by app.js -->
+              </select>
+            </div>
+          </div>
+
+          <div id="portal-reg-event-preview" style="background: var(--bg-card); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px dashed var(--border-subtle); margin-top: 0.5rem; font-size: 0.85rem; display: none;">
+            <div style="font-weight: 700; color: var(--primary-800); margin-bottom: 0.3rem;" id="preview-event-name">Event Details</div>
+            <div style="color: var(--text-muted);" id="preview-event-meta">Schedule & Venue</div>
+          </div>
+        </div>
+
+        <div style="padding: 1rem 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('registration-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit-registration">Confirm & Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Google Account Picker / One-Tap Modal -->
+  <div id="google-oauth-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-container" style="max-width: 440px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <svg class="google-icon" viewBox="0 0 18 18" width="22" height="22">
+            <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.616z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+            <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.59.102-1.167.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/>
+            <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+          </svg>
+          <h3 class="modal-title" style="font-size: 1.15rem;" data-i18n="google_choose_account">Choose a Google Account</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('google-oauth-modal')">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;" data-i18n="google_to_continue">
+          To connect your <strong>NEC Sports Portal</strong> account, select your college Google Workspace account:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.25rem;">
+          <!-- Account 1: Student Vignesh -->
+          <div class="account-item-card" onclick="selectGoogleAccount('24104016@nec.edu.in', 'R. Vignesh', 'student', 'https://api.dicebear.com/7.x/bottts/svg?seed=vignesh')" style="display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: var(--bg-card); cursor: pointer; transition: var(--transition);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #4285F4; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">RV</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main);">R. Vignesh <span class="badge badge-success" style="font-size: 0.65rem; margin-left: 4px;">Student Athlete</span></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">24104016@nec.edu.in</div>
+            </div>
+            <span style="color: var(--primary-600); font-size: 1.1rem;">➔</span>
+          </div>
+
+          <!-- Account 2: Student Asmitha -->
+          <div class="account-item-card" onclick="selectGoogleAccount('24104015@nec.edu.in', 'Asmitha S.', 'student', 'https://api.dicebear.com/7.x/bottts/svg?seed=asmitha')" style="display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: var(--bg-card); cursor: pointer; transition: var(--transition);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #059669; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">AS</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main);">Asmitha S. <span class="badge badge-success" style="font-size: 0.65rem; margin-left: 4px;">Student Athlete</span></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">24104015@nec.edu.in</div>
+            </div>
+            <span style="color: var(--primary-600); font-size: 1.1rem;">➔</span>
+          </div>
+
+          <!-- Account 3: PT Staff -->
+          <div class="account-item-card" onclick="selectGoogleAccount('sportsstaff@nec.edu.in', 'Dr. K. Murugan', 'staff', 'https://api.dicebear.com/7.x/bottts/svg?seed=murugan')" style="display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: var(--bg-card); cursor: pointer; transition: var(--transition);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #ea580c; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">KM</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main);">Dr. K. Murugan <span class="badge badge-warning" style="font-size: 0.65rem; margin-left: 4px;">Physical Director</span></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">sportsstaff@nec.edu.in</div>
+            </div>
+            <span style="color: var(--primary-600); font-size: 1.1rem;">➔</span>
+          </div>
+
+          <!-- Account 4: Admin -->
+          <div class="account-item-card" onclick="selectGoogleAccount('admin@nec.edu.in', 'NEC Sports Admin', 'admin', 'https://api.dicebear.com/7.x/bottts/svg?seed=admin')" style="display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: var(--bg-card); cursor: pointer; transition: var(--transition);">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background: #7c3aed; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">AD</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-main);">Chief Administrator <span class="badge badge-danger" style="font-size: 0.65rem; margin-left: 4px;">Sports Admin</span></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">admin@nec.edu.in</div>
+            </div>
+            <span style="color: var(--primary-600); font-size: 1.1rem;">➔</span>
+          </div>
+        </div>
+
+        <!-- Custom Google Account input -->
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+          <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.4rem;" data-i18n="use_another_account">Or enter another Google account:</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="email" id="custom-google-email" class="form-input" placeholder="e.g. 24104099@nec.edu.in" style="flex: 1; font-size: 0.85rem;">
+            <button type="button" class="btn btn-primary btn-sm" onclick="submitCustomGoogleAccount()">Connect</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Core JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>

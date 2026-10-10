@@ -1,0 +1,19 @@
+{
+  "name": "nec-sports-portal-final",
+  "version": "1.0.0",
+  "description": "NEC Sports Event Management & Automation System with Automated OD Engine",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "start": "node backend/server.js",
+    "dev": "cd backend && npm run dev",
+    "test:health": "curl http://localhost:5000/api/health"
+  },
+  "keywords": [
+    "nec",
+    "sports-portal",
+    "od-automation",
+    "express"
+  ],
+  "author": "National Engineering College",
+  "license": "ISC"
+}

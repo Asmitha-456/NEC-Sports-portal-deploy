@@ -1,0 +1,2785 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "sportsstaff@nec.edu.in",
+      "password": "NECStaff@2026",
+      "name": "Sports Coordinator",
+      "role": "staff",
+      "dept": "Physical Education"
+    },
+    {
+      "id": 2,
+      "email": "sportsadmin@nec.edu.in",
+      "password": "NECAdmin@2026",
+      "name": "Sports Administrator",
+      "role": "admin",
+      "dept": "Administration"
+    },
+    {
+      "id": 3,
+      "email": "24104016@nec.edu.in",
+      "password": "Student@2026",
+      "name": "Bhavana Lakshmi",
+      "role": "student",
+      "reg": "24104016",
+      "dept": "CSE",
+      "year": "III Year"
+    },
+    {
+      "id": 15,
+      "email": "24104015@nec.edu.in",
+      "password": "Student@2026",
+      "name": "Arun Kumar M",
+      "role": "student",
+      "reg": "24104015",
+      "dept": "CSE",
+      "year": "III Year",
+      "googleId": "105354353236735860059",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocKL1gA4M5wQLYk_ofz-ut-pfgjr75rzgrkkBzHTHfff_7os=s96-c",
+      "authProvider": "google"
+    },
+    {
+      "id": 4,
+      "email": "24104021@nec.edu.in",
+      "password": "Student@2026",
+      "name": "Kavin Raj",
+      "role": "student",
+      "reg": "24104021",
+      "dept": "CSE",
+      "year": "III Year"
+    },
+    {
+      "id": 5,
+      "email": "24104035@nec.edu.in",
+      "password": "Student@2026",
+      "name": "Ananya S",
+      "role": "student",
+      "reg": "24104035",
+      "dept": "ECE",
+      "year": "II Year"
+    },
+    {
+      "id": 1791355305385,
+      "name": "Asmitha S",
+      "email": "asmitha@nec.edu.in",
+      "password": "$2a$10$ZgkDW.OaJQ/ccKRv1ZRUbeP1vK23moU5odudwztac0sjybbMf4RwW",
+      "role": "student",
+      "dept": "CSE",
+      "createdAt": "2026-10-07T06:41:45.385Z"
+    },
+    {
+      "id": 1791357316573,
+      "email": "asminarayanan@gmail.com",
+      "googleId": "114672966198023769257",
+      "password": "GoogleOAuthUser",
+      "name": "Asmitha S",
+      "role": "student",
+      "reg": null,
+      "dept": "CSE",
+      "year": "III Year",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocI0Yvrk3P__c1c3HCbdou0Aik53LcUzD7TLf2F2KvghFYHhjA=s96-c",
+      "authProvider": "google"
+    },
+    {
+      "id": 1791448102588,
+      "email": "asmi@nec.edu.in",
+      "password": "Student@2026",
+      "name": "Student (asmi)",
+      "role": "student",
+      "reg": "asmi",
+      "dept": "CSE",
+      "year": "III Year"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "100m Running",
+      "category": "Athletics",
+      "type": "Individual",
+      "venue": "College Ground",
+      "date": "2026-09-20",
+      "time": "09:00 AM",
+      "status": "Open",
+      "limit": 40,
+      "description": "Annual college athletics 100m sprint competition for men and women."
+    },
+    {
+      "id": 2,
+      "name": "Football",
+      "category": "Team Sport",
+      "type": "Team",
+      "venue": "Main Stadium",
+      "date": "2026-09-22",
+      "time": "03:30 PM",
+      "status": "Open",
+      "limit": 60,
+      "description": "Inter-departmental 11-a-side football tournament championship trophy."
+    },
+    {
+      "id": 3,
+      "name": "Badminton",
+      "category": "Racket",
+      "type": "Individual",
+      "venue": "Indoor Hall",
+      "date": "2026-09-24",
+      "time": "10:00 AM",
+      "status": "Open",
+      "limit": 30,
+      "description": "Men and Women singles and doubles badminton knockout matches."
+    },
+    {
+      "id": 4,
+      "name": "Basketball",
+      "category": "Team Sport",
+      "type": "Team",
+      "venue": "Indoor Court",
+      "date": "2026-09-26",
+      "time": "04:00 PM",
+      "status": "Ongoing",
+      "limit": 50,
+      "description": "Fast-paced 5v5 basketball league tournament with department teams."
+    },
+    {
+      "id": 5,
+      "name": "Volleyball",
+      "category": "Team Sport",
+      "type": "Team",
+      "venue": "Volleyball Court",
+      "date": "2026-09-28",
+      "time": "03:00 PM",
+      "status": "Open",
+      "limit": 48,
+      "description": "Standard 6v6 departmental volleyball tournament."
+    },
+    {
+      "id": 6,
+      "name": "Cricket",
+      "category": "Team Sport",
+      "type": "Team",
+      "venue": "Cricket Ground",
+      "date": "2026-09-30",
+      "time": "08:30 AM",
+      "status": "Completed",
+      "limit": 80,
+      "description": "T10 Inter-departmental cricket league matches."
+    }
+  ],
+  "participants": [
+    {
+      "id": 1,
+      "reg": "24104016",
+      "name": "Bhavana Lakshmi",
+      "dept": "CSE",
+      "event": "100m Running",
+      "gender": "Female",
+      "status": "Shortlisted",
+      "year": "III Year"
+    },
+    {
+      "id": 2,
+      "reg": "24104021",
+      "name": "Kavin Raj",
+      "dept": "CSE",
+      "event": "Football",
+      "gender": "Male",
+      "status": "Shortlisted",
+      "year": "III Year"
+    },
+    {
+      "id": 3,
+      "reg": "24104035",
+      "name": "Ananya S",
+      "dept": "ECE",
+      "event": "Badminton",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "II Year"
+    },
+    {
+      "id": 4,
+      "reg": "24104048",
+      "name": "Vishal M",
+      "dept": "IT",
+      "event": "Basketball",
+      "gender": "Male",
+      "status": "Shortlisted",
+      "year": "III Year"
+    },
+    {
+      "id": 5,
+      "reg": "24104062",
+      "name": "Divya P",
+      "dept": "EEE",
+      "event": "Basketball",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "IV Year"
+    },
+    {
+      "id": 6,
+      "reg": "24104073",
+      "name": "Rahul Kumar",
+      "dept": "MECH",
+      "event": "Cricket",
+      "gender": "Male",
+      "status": "Selected",
+      "year": "II Year"
+    },
+    {
+      "id": 7,
+      "reg": "24104081",
+      "name": "Keerthana R",
+      "dept": "CIVIL",
+      "event": "Volleyball",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "III Year"
+    },
+    {
+      "id": 8,
+      "reg": "24104095",
+      "name": "Arun V",
+      "dept": "AIDS",
+      "event": "Football",
+      "gender": "Male",
+      "status": "Shortlisted",
+      "year": "I Year"
+    },
+    {
+      "id": 9,
+      "reg": "24104102",
+      "name": "Nivetha S",
+      "dept": "S&H",
+      "event": "100m Running",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "I Year"
+    },
+    {
+      "id": 10,
+      "reg": "24104114",
+      "name": "Sanjay K",
+      "dept": "ECE",
+      "event": "Volleyball",
+      "gender": "Male",
+      "status": "Selected",
+      "year": "III Year"
+    },
+    {
+      "id": 11,
+      "reg": "24104127",
+      "name": "Harish M",
+      "dept": "CSE",
+      "event": "Cricket",
+      "gender": "Male",
+      "status": "Selected",
+      "year": "IV Year"
+    },
+    {
+      "id": 12,
+      "reg": "24104139",
+      "name": "Pooja R",
+      "dept": "IT",
+      "event": "Badminton",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "II Year"
+    },
+    {
+      "id": 1790757532394,
+      "reg": "24104015",
+      "name": "Asmitha S",
+      "dept": "CSE",
+      "event": "100m Running",
+      "gender": "Female",
+      "status": "Shortlisted",
+      "year": "III Year",
+      "registeredAt": "2026-09-30T08:38:52.394Z"
+    },
+    {
+      "id": 1791354582516,
+      "reg": "24104015",
+      "name": "Asmitha S",
+      "dept": "CSE",
+      "event": "Badminton",
+      "gender": "Female",
+      "status": "Shortlisted",
+      "year": "III Year",
+      "registeredAt": "2026-10-07T06:29:42.478Z"
+    },
+    {
+      "id": 1791356593752,
+      "reg": "24104015",
+      "name": "Asmitha S",
+      "dept": "CSE",
+      "event": "Volleyball",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "III Year",
+      "registeredAt": "2026-10-07T07:03:13.710Z"
+    },
+    {
+      "id": 1791356631841,
+      "reg": "24104015",
+      "name": "Asmitha S",
+      "dept": "CSE",
+      "event": "Football",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "III Year",
+      "registeredAt": "2026-10-07T07:03:51.806Z"
+    },
+    {
+      "id": 1791357364143,
+      "reg": "24104000",
+      "name": "Asmi",
+      "dept": "CSE",
+      "event": "100m Running",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "III Year",
+      "registeredAt": "2026-10-07T07:16:04.126Z"
+    },
+    {
+      "id": 1791357472954,
+      "reg": "22004400",
+      "name": "Jhanu",
+      "dept": "CSE",
+      "event": "100m Running",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "III Year",
+      "registeredAt": "2026-10-07T07:17:52.936Z"
+    },
+    {
+      "id": 1791372464950,
+      "reg": "24104018",
+      "name": "Gowri",
+      "dept": "CSE",
+      "event": "100m Running",
+      "gender": "Female",
+      "status": "Selected",
+      "year": "III Year",
+      "registeredAt": "2026-10-07T11:27:44.892Z"
+    }
+  ],
+  "points": {
+    "CSE": 186,
+    "ECE": 172,
+    "IT": 158,
+    "EEE": 141,
+    "MECH": 126,
+    "CIVIL": 119,
+    "AIDS": 104,
+    "S&H": 88
+  },
+  "studentPoints": {
+    "24104016": 42,
+    "24104021": 38,
+    "24104035": 35,
+    "24104048": 31,
+    "24104062": 29,
+    "24104073": 27,
+    "24104081": 25,
+    "24104095": 23,
+    "24104102": 21,
+    "24104114": 20,
+    "24104127": 18,
+    "24104139": 17
+  },
+  "attendance": [
+    {
+      "id": 1,
+      "key": "Football|24104021",
+      "event": "Football",
+      "reg": "24104021",
+      "name": "Kavin Raj",
+      "dept": "CSE",
+      "present": true,
+      "date": "2026-09-22 03:30 PM"
+    },
+    {
+      "id": 2,
+      "key": "100m Running|24104016",
+      "event": "100m Running",
+      "reg": "24104016",
+      "name": "Bhavana Lakshmi",
+      "dept": "CSE",
+      "present": false,
+      "date": "8/10/2026, 2:26:53 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1790757624970,
+      "key": "100m Running|24104102",
+      "event": "100m Running",
+      "reg": "24104102",
+      "name": "Nivetha S",
+      "dept": "S&H",
+      "present": false,
+      "date": "8/10/2026, 2:26:53 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1790757624918,
+      "key": "100m Running|24104015",
+      "event": "100m Running",
+      "reg": "24104015",
+      "name": "Asmitha S",
+      "dept": "CSE",
+      "present": true,
+      "date": "8/10/2026, 2:26:53 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1791110601635,
+      "key": "Badminton|24104035",
+      "event": "Badminton",
+      "reg": "24104035",
+      "name": "Ananya S",
+      "dept": "ECE",
+      "present": false,
+      "date": "7/10/2026, 12:01:34 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1791110601603,
+      "key": "Badminton|24104139",
+      "event": "Badminton",
+      "reg": "24104139",
+      "name": "Pooja R",
+      "dept": "IT",
+      "present": true,
+      "date": "7/10/2026, 12:01:34 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1791354695117,
+      "key": "Badminton|24104015",
+      "event": "Badminton",
+      "reg": "24104015",
+      "name": "Asmitha S",
+      "dept": "CSE",
+      "present": true,
+      "date": "7/10/2026, 12:01:34 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1791448759372,
+      "key": "100m Running|24104000",
+      "event": "100m Running",
+      "reg": "24104000",
+      "name": "Asmi",
+      "dept": "CSE",
+      "present": true,
+      "date": "8/10/2026, 2:26:53 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1791448759372,
+      "key": "100m Running|22004400",
+      "event": "100m Running",
+      "reg": "22004400",
+      "name": "Jhanu",
+      "dept": "CSE",
+      "present": true,
+      "date": "8/10/2026, 2:26:53 pm",
+      "markedBy": "Sports Coordinator"
+    },
+    {
+      "id": 1791448759329,
+      "key": "100m Running|24104018",
+      "event": "100m Running",
+      "reg": "24104018",
+      "name": "Gowri",
+      "dept": "CSE",
+      "present": false,
+      "date": "8/10/2026, 2:26:53 pm",
+      "markedBy": "Sports Coordinator"
+    }
+  ],
+  "odBatches": [
+    {
+      "id": 1791449813821,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/6654",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 3,
+      "departmentBreakdown": {
+        "CSE": 3
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:56:53.489Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 3 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104000",
+          "name": "Asmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "22004400",
+          "name": "Jhanu",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:56:53.489Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1791449740380,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/1308",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 3,
+      "departmentBreakdown": {
+        "CSE": 3
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:55:39.889Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 3 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104000",
+          "name": "Asmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "22004400",
+          "name": "Jhanu",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:55:39.889Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1791449254196,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/5787",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 3,
+      "departmentBreakdown": {
+        "CSE": 3
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:47:34.141Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 3 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104000",
+          "name": "Asmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "22004400",
+          "name": "Jhanu",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:47:34.141Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1791449036813,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/9432",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 3,
+      "departmentBreakdown": {
+        "CSE": 3
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:43:56.314Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 3 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104000",
+          "name": "Asmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "22004400",
+          "name": "Jhanu",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:43:56.314Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1791448994801,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/9568",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 3,
+      "departmentBreakdown": {
+        "CSE": 3
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:43:14.701Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 3 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104000",
+          "name": "Asmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "22004400",
+          "name": "Jhanu",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:43:14.701Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1791448759031,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/6855",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 2,
+      "departmentBreakdown": {
+        "CSE": 2
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:39:18.885Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 2 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104000",
+          "name": "Asmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:39:18.885Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1791448681771,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/5059",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 2,
+      "departmentBreakdown": {
+        "CSE": 2
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-08T08:38:01.045Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "CM Trophy",
+      "students": [
+        {
+          "reg": "24104016",
+          "name": "Bhavana Lakshmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-08T08:38:01.046Z",
+          "comments": "Automatically generated based on Shortlisted roster"
+        }
+      ]
+    },
+    {
+      "id": 1791277329291,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/1765",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 1,
+      "departmentBreakdown": {
+        "CSE": 1
+      },
+      "status": "HOD Approved",
+      "generatedAt": "2026-10-06T09:02:08.627Z",
+      "generatedBy": "Sports Administrator",
+      "remarks": "Attendance-linked OD sanctioned for 1 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Shortlisted",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Administrator",
+          "timestamp": "2026-10-06T09:02:08.627Z",
+          "comments": "Automatically generated based on All roster"
+        },
+        {
+          "status": "HOD Approved",
+          "changedBy": "Sports Administrator",
+          "timestamp": "2026-10-06T09:02:43.355Z",
+          "comments": "Status updated to HOD Approved"
+        }
+      ]
+    },
+    {
+      "id": 1791196528669,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/8090",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 1,
+      "departmentBreakdown": {
+        "CSE": 1
+      },
+      "status": "Generated",
+      "generatedAt": "2026-10-05T10:35:28.608Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 1 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-10-05T10:35:28.608Z",
+          "comments": "Automatically generated based on All roster"
+        }
+      ]
+    },
+    {
+      "id": 1790757626382,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/5486",
+      "title": "Automatic OD Requisition — 100m Running (All)",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "eventTime": "09:00 AM",
+      "venue": "College Ground",
+      "session": "Full Day",
+      "department": "All",
+      "totalStudents": 1,
+      "departmentBreakdown": {
+        "CSE": 1
+      },
+      "status": "HOD Approved",
+      "generatedAt": "2026-09-30T08:40:26.295Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Attendance-linked OD sanctioned for 1 present participants in 100m Running",
+      "students": [
+        {
+          "reg": "24104015",
+          "name": "Asmitha S",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "event": "100m Running",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-09-30T08:40:26.295Z",
+          "comments": "Automatically generated based on All roster"
+        },
+        {
+          "status": "HOD Approved",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-09-30T08:41:32.293Z",
+          "comments": "Status updated to HOD Approved"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "refNo": "NEC/PED/OD/2026-27/ATH-01",
+      "title": "Automated OD Batch for 100m Running Sprint",
+      "eventId": 1,
+      "eventName": "100m Running",
+      "eventDate": "2026-09-20",
+      "venue": "College Ground",
+      "session": "Forenoon (FN)",
+      "department": "All",
+      "totalStudents": 2,
+      "departmentBreakdown": {
+        "CSE": 1,
+        "S&H": 1
+      },
+      "status": "HOD Approved",
+      "generatedAt": "2026-09-18T10:30:00.000Z",
+      "generatedBy": "Sports Coordinator",
+      "remarks": "Automated OD approval for 100m sprint trials and finals",
+      "students": [
+        {
+          "reg": "24104016",
+          "name": "Bhavana Lakshmi",
+          "dept": "CSE",
+          "year": "III Year",
+          "gender": "Female",
+          "status": "Selected",
+          "odStatus": "Approved"
+        },
+        {
+          "reg": "24104102",
+          "name": "Nivetha S",
+          "dept": "S&H",
+          "year": "I Year",
+          "gender": "Female",
+          "status": "Selected",
+          "odStatus": "Approved"
+        }
+      ],
+      "approvalHistory": [
+        {
+          "status": "Generated",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-09-18T10:30:00.000Z",
+          "comments": "Auto-generated from selected roster"
+        },
+        {
+          "status": "Submitted to HOD",
+          "changedBy": "Sports Coordinator",
+          "timestamp": "2026-09-18T11:00:00.000Z",
+          "comments": "Forwarded for HOD clearance"
+        },
+        {
+          "status": "HOD Approved",
+          "changedBy": "HOD / Physical Director",
+          "timestamp": "2026-09-18T14:15:00.000Z",
+          "comments": "Sanctioned for college sports"
+        }
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1791560293731,
+      "title": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "metadata": null,
+      "date": "9/10/2026, 9:08:13 pm",
+      "createdAt": "2026-10-09T15:38:13.151Z",
+      "read": false
+    },
+    {
+      "id": 1791449813594,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/6654",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "22004400",
+      "date": "8/10/2026, 2:26:53 pm",
+      "read": false
+    },
+    {
+      "id": 1791449813616,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/6654",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "8/10/2026, 2:26:53 pm",
+      "read": false
+    },
+    {
+      "id": 1791449813532,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/6654",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:26:53 pm",
+      "read": false
+    },
+    {
+      "id": 1791449739983,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/1308",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "22004400",
+      "date": "8/10/2026, 2:25:39 pm",
+      "read": false
+    },
+    {
+      "id": 1791449739930,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/1308",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "8/10/2026, 2:25:39 pm",
+      "read": false
+    },
+    {
+      "id": 1791449739912,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/1308",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:25:39 pm",
+      "read": false
+    },
+    {
+      "id": 1791449254227,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/5787",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "22004400",
+      "date": "8/10/2026, 2:17:34 pm",
+      "read": false
+    },
+    {
+      "id": 1791449254163,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/5787",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "8/10/2026, 2:17:34 pm",
+      "read": false
+    },
+    {
+      "id": 1791449254205,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/5787",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:17:34 pm",
+      "read": false
+    },
+    {
+      "id": 1791449036410,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/9432",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "22004400",
+      "date": "8/10/2026, 2:13:56 pm",
+      "read": false
+    },
+    {
+      "id": 1791449036335,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/9432",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "8/10/2026, 2:13:56 pm",
+      "read": false
+    },
+    {
+      "id": 1791449036401,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/9432",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:13:56 pm",
+      "read": false
+    },
+    {
+      "id": 1791448994795,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/9568",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "22004400",
+      "date": "8/10/2026, 2:13:14 pm",
+      "read": false
+    },
+    {
+      "id": 1791448994720,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/9568",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "8/10/2026, 2:13:14 pm",
+      "read": false
+    },
+    {
+      "id": 1791448994734,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/9568",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:13:14 pm",
+      "read": false
+    },
+    {
+      "id": 1791448758925,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/6855",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "8/10/2026, 2:09:18 pm",
+      "read": false
+    },
+    {
+      "id": 1791448758956,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/6855",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:09:18 pm",
+      "read": false
+    },
+    {
+      "id": 1791448681157,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/5059",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "8/10/2026, 2:08:01 pm",
+      "read": false
+    },
+    {
+      "id": 1791448681068,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/5059",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104016",
+      "date": "8/10/2026, 2:08:01 pm",
+      "read": false
+    },
+    {
+      "id": 1791448277648,
+      "title": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "8/10/2026, 2:01:17 pm",
+      "read": false
+    },
+    {
+      "id": 1791372465040,
+      "title": "Event Registration Confirmed",
+      "body": "You are successfully registered for 100m Running (College Ground, 2026-09-20). Status: Selected.",
+      "type": "general",
+      "targetRole": "student",
+      "targetReg": "24104018",
+      "date": "7/10/2026, 4:57:44 pm",
+      "read": false
+    },
+    {
+      "id": 1791357473036,
+      "title": "Event Registration Confirmed",
+      "body": "You are successfully registered for 100m Running (College Ground, 2026-09-20). Status: Selected.",
+      "type": "general",
+      "targetRole": "student",
+      "targetReg": "22004400",
+      "date": "7/10/2026, 12:47:53 pm",
+      "read": false
+    },
+    {
+      "id": 1791357364284,
+      "title": "Event Registration Confirmed",
+      "body": "You are successfully registered for 100m Running (College Ground, 2026-09-20). Status: Selected.",
+      "type": "general",
+      "targetRole": "student",
+      "targetReg": "24104000",
+      "date": "7/10/2026, 12:46:04 pm",
+      "read": false
+    },
+    {
+      "id": 1791356631993,
+      "title": "Event Registration Confirmed",
+      "body": "You are successfully registered for Football (Main Stadium, 2026-09-22). Status: Selected.",
+      "type": "general",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "7/10/2026, 12:33:51 pm",
+      "read": false
+    },
+    {
+      "id": 1791356593806,
+      "title": "Event Registration Confirmed",
+      "body": "You are successfully registered for Volleyball (Volleyball Court, 2026-09-28). Status: Selected.",
+      "type": "general",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "7/10/2026, 12:33:13 pm",
+      "read": false
+    },
+    {
+      "id": 1791354582565,
+      "title": "Event Registration Confirmed",
+      "body": "You are successfully registered for Badminton (Indoor Hall, 2026-09-24). Status: Selected.",
+      "type": "general",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "7/10/2026, 11:59:42 am",
+      "read": true
+    },
+    {
+      "id": 1791277363395,
+      "title": "OD Sanction Approved",
+      "body": "Your OD for 100m Running on 2026-09-20 has been officially approved!",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "6/10/2026, 2:32:43 pm",
+      "read": true
+    },
+    {
+      "id": 1791277328672,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/1765",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "6/10/2026, 2:32:08 pm",
+      "read": true
+    },
+    {
+      "id": 1791197706118,
+      "title": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:25:06 pm",
+      "read": true
+    },
+    {
+      "id": 1791197679748,
+      "title": "[SMS] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:24:39 pm",
+      "read": true
+    },
+    {
+      "id": 1791197657949,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:24:17 pm",
+      "read": true
+    },
+    {
+      "id": 1791197651584,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:24:11 pm",
+      "read": true
+    },
+    {
+      "id": 1791197604797,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:23:24 pm",
+      "read": true
+    },
+    {
+      "id": 1791196999449,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:13:19 pm",
+      "read": true
+    },
+    {
+      "id": 1791196996568,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:13:16 pm",
+      "read": true
+    },
+    {
+      "id": 1791196918313,
+      "title": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:11:58 pm",
+      "read": true
+    },
+    {
+      "id": 1791196820510,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:10:20 pm",
+      "read": true
+    },
+    {
+      "id": 1791196816219,
+      "title": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:10:16 pm",
+      "read": true
+    },
+    {
+      "id": 1791196741336,
+      "title": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:09:01 pm",
+      "read": true
+    },
+    {
+      "id": 1791196690784,
+      "title": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:08:10 pm",
+      "read": true
+    },
+    {
+      "id": 1791196528627,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/8090",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "5/10/2026, 4:05:28 pm",
+      "read": true
+    },
+    {
+      "id": 1791196207907,
+      "title": "[SMS] NEC Sports: Official OD Pass Sanction Notice",
+      "body": "Od",
+      "type": "announcement",
+      "targetRole": "all",
+      "targetReg": null,
+      "date": "5/10/2026, 4:00:07 pm",
+      "read": true
+    },
+    {
+      "id": 1790757692357,
+      "title": "OD Sanction Approved",
+      "body": "Your OD for 100m Running on 2026-09-20 has been officially approved!",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "30/9/2026, 2:11:32 pm",
+      "read": true
+    },
+    {
+      "id": 1790757626347,
+      "title": "On-Duty (OD) Pass Generated",
+      "body": "Your OD requisition for 100m Running on 2026-09-20 (Full Day) has been generated. Ref: NEC/PED/OD/2026-27/ALL-100M/5486",
+      "type": "od",
+      "targetRole": "student",
+      "targetReg": "24104015",
+      "date": "30/9/2026, 2:10:26 pm",
+      "read": true
+    },
+    {
+      "id": 1,
+      "title": "Sports Portal Backend Ready",
+      "body": "Automated OD list generation and real-time backend synchronization are now active.",
+      "date": "29/9/2026, 2:42:29 pm",
+      "type": "system",
+      "read": true
+    },
+    {
+      "id": 2,
+      "title": "OD Pass Available",
+      "body": "Your On-Duty (OD) pass for 100m Running on 2026-09-20 has been sanctioned.",
+      "date": "29/9/2026, 2:42:29 pm",
+      "type": "od",
+      "targetReg": "24104016",
+      "read": true
+    },
+    {
+      "id": 1791564862315,
+      "title": "📨 Official OD Letter Emailed: 100m Running",
+      "body": "Your official sports On-Duty (OD) sanction order for 100m Running (2026-09-20, Full Day) has been dispatched to 24104015@nec.edu.in.",
+      "date": "9/10/2026, 10:24:21 pm",
+      "type": "od",
+      "targetReg": "24104015",
+      "read": false
+    },
+    {
+      "id": 1791564861924,
+      "title": "📨 Official OD Letter Emailed: 100m Running",
+      "body": "Your official sports On-Duty (OD) sanction order for 100m Running (2026-09-20, Full Day) has been dispatched to 24104000@nec.edu.in.",
+      "date": "9/10/2026, 10:24:21 pm",
+      "type": "od",
+      "targetReg": "24104000",
+      "read": false
+    },
+    {
+      "id": 1791564862198,
+      "title": "📨 Official OD Letter Emailed: 100m Running",
+      "body": "Your official sports On-Duty (OD) sanction order for 100m Running (2026-09-20, Full Day) has been dispatched to 22004400@nec.edu.in.",
+      "date": "9/10/2026, 10:24:21 pm",
+      "type": "od",
+      "targetReg": "22004400",
+      "read": false
+    }
+  ],
+  "audit": [
+    {
+      "id": 1791564861575,
+      "actor": "Sports Coordinator",
+      "action": "Dispatched OD via Email",
+      "target": "NEC/PED/OD/2026-27/ALL-100M/6654",
+      "detail": "Sent OD letters to 4 recipient(s) (simulated mode)",
+      "date": "9/10/2026, 10:24:21 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791564812557,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "9/10/2026, 10:23:32 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791560538416,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 9:12:18 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791560512701,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "9/10/2026, 9:11:52 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791560485209,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "9/10/2026, 9:11:25 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791560293206,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "od",
+      "date": "9/10/2026, 9:08:13 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791559772215,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "9/10/2026, 8:59:32 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791559702211,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "9/10/2026, 8:58:22 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791559453741,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 8:54:13 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791558857079,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "9/10/2026, 8:44:17 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791558548806,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 8:39:08 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791558481682,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 8:38:01 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791540168592,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 3:32:48 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791536006229,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 2:23:26 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791519372798,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 9:46:12 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791518765315,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "9/10/2026, 9:36:05 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791518646722,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "9/10/2026, 9:34:06 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791449931036,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "8/10/2026, 2:28:50 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791449813588,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 3 students",
+      "date": "8/10/2026, 2:26:53 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449813478,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 6 students (3 present, 3 absent)",
+      "date": "8/10/2026, 2:26:53 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449740029,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 3 students",
+      "date": "8/10/2026, 2:25:39 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449739885,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 6 students (3 present, 3 absent)",
+      "date": "8/10/2026, 2:25:39 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449254257,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 3 students",
+      "date": "8/10/2026, 2:17:34 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449254170,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 6 students (3 present, 3 absent)",
+      "date": "8/10/2026, 2:17:34 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449036442,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 3 students",
+      "date": "8/10/2026, 2:13:56 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449036363,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 6 students (3 present, 3 absent)",
+      "date": "8/10/2026, 2:13:56 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791449005605,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "8/10/2026, 2:13:25 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448994811,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 3 students",
+      "date": "8/10/2026, 2:13:14 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448994687,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 6 students (3 present, 3 absent)",
+      "date": "8/10/2026, 2:13:14 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448945594,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "8/10/2026, 2:12:25 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448869077,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "8/10/2026, 2:11:09 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448812184,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "8/10/2026, 2:10:12 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448774772,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "8/10/2026, 2:09:34 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448758961,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 2 students",
+      "date": "8/10/2026, 2:09:18 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448758918,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 6 students (2 present, 4 absent)",
+      "date": "8/10/2026, 2:09:18 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448681156,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 2 students",
+      "date": "8/10/2026, 2:08:01 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448624165,
+      "actor": "Sports Coordinator",
+      "action": "Updated Participant Status",
+      "target": "Asmitha S",
+      "detail": "Event: Badminton, New Status: Shortlisted",
+      "date": "8/10/2026, 2:07:04 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448617142,
+      "actor": "Sports Coordinator",
+      "action": "Updated Participant Status",
+      "target": "Kavin Raj",
+      "detail": "Event: Football, New Status: Shortlisted",
+      "date": "8/10/2026, 2:06:57 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448615274,
+      "actor": "Sports Coordinator",
+      "action": "Updated Participant Status",
+      "target": "Bhavana Lakshmi",
+      "detail": "Event: 100m Running, New Status: Shortlisted",
+      "date": "8/10/2026, 2:06:55 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448585134,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "8/10/2026, 2:06:25 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448518558,
+      "actor": "Asmitha S",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with asmitha@nec.edu.in",
+      "date": "8/10/2026, 2:05:18 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448452551,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "8/10/2026, 2:04:12 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448440235,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "8/10/2026, 2:04:00 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448357354,
+      "actor": "Student (asmi)",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with asmi@nec.edu.in",
+      "date": "8/10/2026, 2:02:37 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448277716,
+      "actor": "Sports Coordinator",
+      "action": "Broadcasted Notification",
+      "target": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "od",
+      "date": "8/10/2026, 2:01:17 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791448221640,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "8/10/2026, 2:00:21 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448183084,
+      "actor": "Asmitha S",
+      "action": "Google OAuth Login",
+      "target": "student",
+      "detail": "Logged in via Google (asminarayanan@gmail.com)",
+      "date": "8/10/2026, 1:59:42 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448123519,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "8/10/2026, 1:58:43 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448102638,
+      "actor": "Student (asmi)",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with asmi@nec.edu.in",
+      "date": "8/10/2026, 1:58:22 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791448082378,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "8/10/2026, 1:58:02 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791372464922,
+      "actor": "Bhavana Lakshmi",
+      "action": "Registered Participant",
+      "target": "100m Running",
+      "detail": "Reg No: 24104018, Dept: CSE",
+      "date": "7/10/2026, 4:57:44 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791372439019,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "7/10/2026, 4:57:18 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791371853534,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "7/10/2026, 4:47:33 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791371835416,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "7/10/2026, 4:47:15 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791357473051,
+      "actor": "Asmitha S",
+      "action": "Registered Participant",
+      "target": "100m Running",
+      "detail": "Reg No: 22004400, Dept: CSE",
+      "date": "7/10/2026, 12:47:52 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791357425260,
+      "actor": "Asmitha S",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with asmitha@nec.edu.in",
+      "date": "7/10/2026, 12:47:05 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791357385380,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "7/10/2026, 12:46:25 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791357364209,
+      "actor": "Asmitha S",
+      "action": "Registered Participant",
+      "target": "100m Running",
+      "detail": "Reg No: 24104000, Dept: CSE",
+      "date": "7/10/2026, 12:46:04 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791357316602,
+      "actor": "Asmitha S",
+      "action": "Google OAuth Login",
+      "target": "student",
+      "detail": "Logged in via Google (asminarayanan@gmail.com)",
+      "date": "7/10/2026, 12:45:16 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791357259178,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "7/10/2026, 12:44:19 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791357249355,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "7/10/2026, 12:44:09 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791356665870,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "7/10/2026, 12:34:25 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791356647867,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "7/10/2026, 12:34:07 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791356631910,
+      "actor": "Asmitha S",
+      "action": "Registered Participant",
+      "target": "Football",
+      "detail": "Reg No: 24104015, Dept: CSE",
+      "date": "7/10/2026, 12:33:51 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791356593799,
+      "actor": "Asmitha S",
+      "action": "Registered Participant",
+      "target": "Volleyball",
+      "detail": "Reg No: 24104015, Dept: CSE",
+      "date": "7/10/2026, 12:33:13 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791356519179,
+      "actor": "Asmitha S",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with asmitha@nec.edu.in",
+      "date": "7/10/2026, 12:31:59 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791356322672,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "7/10/2026, 12:28:42 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791355305492,
+      "actor": "Sports Administrator",
+      "action": "Created User",
+      "target": "asmitha@nec.edu.in",
+      "detail": "Role: student",
+      "date": "7/10/2026, 12:11:45 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791354737698,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "7/10/2026, 12:02:17 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791354694405,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "Badminton",
+      "detail": "Marked 3 students (2 present, 1 absent)",
+      "date": "7/10/2026, 12:01:34 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791354678355,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "7/10/2026, 12:01:18 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791354601659,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "7/10/2026, 12:00:01 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791354582509,
+      "actor": "Arun Kumar M",
+      "action": "Registered Participant",
+      "target": "Badminton",
+      "detail": "Reg No: 24104015, Dept: CSE",
+      "date": "7/10/2026, 11:59:42 am",
+      "ip": ""
+    },
+    {
+      "id": 1791353922512,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "7/10/2026, 11:48:42 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791353891112,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "7/10/2026, 11:48:11 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791353869296,
+      "actor": "Arun Kumar M",
+      "action": "Google OAuth Login",
+      "target": "student",
+      "detail": "Logged in via Google (24104015@nec.edu.in)",
+      "date": "7/10/2026, 11:47:49 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791353715672,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "7/10/2026, 11:45:15 am",
+      "ip": "::1"
+    },
+    {
+      "id": 1791295277285,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "6/10/2026, 7:31:17 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791295242415,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "6/10/2026, 7:30:42 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791295187114,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "6/10/2026, 7:29:47 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277993312,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "6/10/2026, 2:43:13 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277960307,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "6/10/2026, 2:42:40 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277918384,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "6/10/2026, 2:41:58 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277883656,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "6/10/2026, 2:41:23 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277812451,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "6/10/2026, 2:40:12 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277363471,
+      "actor": "Sports Administrator",
+      "action": "Updated OD Batch Status",
+      "target": "NEC/PED/OD/2026-27/ALL-100M/1765",
+      "detail": "New status: HOD Approved",
+      "date": "6/10/2026, 2:32:43 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791277328708,
+      "actor": "Sports Administrator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 1 students",
+      "date": "6/10/2026, 2:32:08 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791277328623,
+      "actor": "Sports Administrator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 3 students (1 present, 2 absent)",
+      "date": "6/10/2026, 2:32:08 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791277122158,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "6/10/2026, 2:28:42 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791277078846,
+      "actor": "Sports Coordinator",
+      "action": "Updated Participant Status",
+      "target": "Asmitha S",
+      "detail": "Event: 100m Running, New Status: Shortlisted",
+      "date": "6/10/2026, 2:27:58 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791277030255,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "6/10/2026, 2:27:10 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791200761912,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "5/10/2026, 5:16:01 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791199939752,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "5/10/2026, 5:02:19 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791199928202,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "5/10/2026, 5:02:08 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791199909708,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "5/10/2026, 5:01:49 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791198930365,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "5/10/2026, 4:45:30 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791197706129,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:25:06 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791197679755,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[SMS] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:24:39 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791197658026,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:24:17 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791197651626,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:24:11 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791197604806,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:23:24 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196999402,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:13:19 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196996534,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:13:16 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196918381,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:11:58 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196820582,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:10:20 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196816132,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[MAIL] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:10:16 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196741377,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:09:01 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196690885,
+      "actor": "Sports Administrator",
+      "action": "Broadcasted Notification",
+      "target": "[WHATSAPP] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:08:10 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196660684,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "5/10/2026, 4:07:40 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791196643948,
+      "actor": "Bhavana Lakshmi",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104016@nec.edu.in",
+      "date": "5/10/2026, 4:07:23 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791196618730,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "5/10/2026, 4:06:58 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791196528672,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 1 students",
+      "date": "5/10/2026, 4:05:28 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196528639,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 3 students (1 present, 2 absent)",
+      "date": "5/10/2026, 4:05:28 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196207936,
+      "actor": "Sports Coordinator",
+      "action": "Broadcasted Notification",
+      "target": "[SMS] NEC Sports: Official OD Pass Sanction Notice",
+      "detail": "Od",
+      "date": "5/10/2026, 4:00:07 pm",
+      "ip": ""
+    },
+    {
+      "id": 1791196056674,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "5/10/2026, 3:57:36 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791195921361,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "5/10/2026, 3:55:21 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791195890851,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "5/10/2026, 3:54:50 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1791110601494,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "Badminton",
+      "detail": "Marked 2 students (1 present, 1 absent)",
+      "date": "4/10/2026, 4:13:21 pm",
+      "ip": ""
+    },
+    {
+      "id": 1790758407477,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "30/9/2026, 2:23:27 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1790757757006,
+      "actor": "Sports Administrator",
+      "action": "User Logged In",
+      "target": "admin",
+      "detail": "Logged in with sportsadmin@nec.edu.in",
+      "date": "30/9/2026, 2:12:36 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1790757692331,
+      "actor": "Sports Coordinator",
+      "action": "Updated OD Batch Status",
+      "target": "NEC/PED/OD/2026-27/ALL-100M/5486",
+      "detail": "New status: HOD Approved",
+      "date": "30/9/2026, 2:11:32 pm",
+      "ip": ""
+    },
+    {
+      "id": 1790757626364,
+      "actor": "Sports Coordinator",
+      "action": "Auto-Generated OD List",
+      "target": "100m Running",
+      "detail": "Generated 1 batch(es) for 1 students",
+      "date": "30/9/2026, 2:10:26 pm",
+      "ip": ""
+    },
+    {
+      "id": 1790757626313,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 3 students (1 present, 2 absent)",
+      "date": "30/9/2026, 2:10:26 pm",
+      "ip": ""
+    },
+    {
+      "id": 1790757624942,
+      "actor": "Sports Coordinator",
+      "action": "Saved Attendance",
+      "target": "100m Running",
+      "detail": "Marked 3 students (1 present, 2 absent)",
+      "date": "30/9/2026, 2:10:24 pm",
+      "ip": ""
+    },
+    {
+      "id": 1790757579414,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "30/9/2026, 2:09:39 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1790757532487,
+      "actor": "Asmitha S",
+      "action": "Registered Participant",
+      "target": "100m Running",
+      "detail": "Reg No: 24104015, Dept: CSE",
+      "date": "30/9/2026, 2:08:52 pm",
+      "ip": ""
+    },
+    {
+      "id": 1790675321986,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "29/9/2026, 3:18:41 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1790674982374,
+      "actor": "Sports Coordinator",
+      "action": "User Logged In",
+      "target": "staff",
+      "detail": "Logged in with sportsstaff@nec.edu.in",
+      "date": "29/9/2026, 3:13:02 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1790674790596,
+      "actor": "Arun Kumar M",
+      "action": "User Logged In",
+      "target": "student",
+      "detail": "Logged in with 24104015@nec.edu.in",
+      "date": "29/9/2026, 3:09:50 pm",
+      "ip": "::1"
+    },
+    {
+      "id": 1,
+      "actor": "System",
+      "action": "Initialized Backend Database",
+      "target": "NEC Sports Core",
+      "detail": "Loaded seed events, participants, and automated OD modules",
+      "date": "29/9/2026, 2:42:29 pm"
+    }
+  ],
+  "emailDispatches": [
+    {
+      "id": 1791564861483,
+      "refNo": "NEC/PED/OD/2026-27/ALL-100M/6654",
+      "eventName": "100m Running",
+      "department": "All",
+      "studentCount": 3,
+      "recipients": [
+        "24104015@nec.edu.in",
+        "24104000@nec.edu.in",
+        "22004400@nec.edu.in",
+        "sports@nec.edu.in"
+      ],
+      "sender": "Sports Coordinator",
+      "mode": "simulated",
+      "timestamp": "2026-10-09T16:54:21.483Z",
+      "remarks": "Attendance-linked OD sanctioned for 3 present participants in 100m Running"
+    }
+  ]
+}
